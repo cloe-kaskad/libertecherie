@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Programme — 14 février 2026 · Liberté, Chérie !</title>
+<meta name="description" content="Le programme du festival Liberté, Chérie ! — 14 février 2026, Kaskad République.">
+<link rel="icon" type="image/jpeg" href="assets/img/favicon.jpg">
+<link rel="apple-touch-icon" href="assets/img/favicon.jpg">
+<link rel="stylesheet" href="assets/styles.css">
+<style>
+/* ==========================================================
+   PAGE PROGRAMME
+   ========================================================== */
+.prog-page {
+  background: var(--ivoire);
+  color: var(--encre);
+}
+
+/* ---- HERO ---- */
+.prog-hero {
+  background: var(--rose);
+  padding: 160px 40px 90px;
+  position: relative;
+  overflow: hidden;
+}
+.prog-hero::before {
+  content: '14fev26';
+  position: absolute;
+  right: -30px; bottom: -40px;
+  font-family: var(--fb);
+  font-weight: 700;
+  font-size: clamp(90px, 16vw, 280px);
+  color: rgba(230, 54, 29, 0.18);
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+  pointer-events: none;
+  line-height: 1;
+  z-index: 0;
+}
+.prog-hero-inner {
+  max-width: 1240px;
+  margin: 0 auto;
+  position: relative; z-index: 2;
+}
+.prog-eyebrow {
+  font-family: var(--fb);
+  font-size: 11px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--rouge);
+  font-weight: 600;
+  margin-bottom: 28px;
+}
+.prog-h1 {
+  font-family: var(--fb);
+  font-weight: 700;
+  font-size: clamp(48px, 7.5vw, 120px);
+  line-height: 1.0;
+  letter-spacing: -0.03em;
+  color: var(--rouge);
+  margin-bottom: 24px;
+}
+.prog-h1 .it {
+  font-family: var(--fs);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--bordeaux);
+  display: block;
+  font-size: 0.45em;
+  line-height: 1.15;
+  margin-top: 14px;
+  letter-spacing: -0.01em;
+}
+.prog-meta {
+  display: flex; gap: 36px; flex-wrap: wrap;
+  margin-top: 36px;
+  border-top: 1px solid rgba(230, 54, 29, 0.25);
+  padding-top: 28px;
+  max-width: 720px;
+}
+.prog-meta > div {
+  flex: 1; min-width: 140px;
+}
+.prog-meta .k {
+  font-family: var(--fb);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--rouge);
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.prog-meta .v {
+  font-family: var(--fb);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--bordeaux);
+}
+.prog-cta {
+  display: inline-flex;
+  margin-top: 40px;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.prog-cta .btn {
+  background: var(--rouge);
+  color: var(--blanc);
+  padding: 16px 28px;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 999px;
+  letter-spacing: 0.04em;
+}
+.prog-cta .btn:hover { background: var(--bordeaux); transform: translateY(-2px); }
+.prog-cta .btn-back {
+  background: transparent;
+  color: var(--bordeaux);
+  border: 1px solid rgba(81,0,4,0.3);
+}
+.prog-cta .btn-back:hover { background: rgba(81,0,4,0.08); color: var(--bordeaux); }
+
+/* ---- Sticky day strip ---- */
+.day-strip {
+  background: var(--rouge);
+  color: var(--blanc);
+  padding: 14px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky; top: 0; z-index: 50;
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+}
+.day-strip-left {
+  font-family: var(--fb);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.01em;
+}
+.day-strip-right {
+  display: flex; gap: 24px;
+  font-family: var(--fb);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.7);
+}
+.day-strip-right a {
+  color: rgba(255,255,255,0.7);
+  transition: color .2s;
+}
+.day-strip-right a:hover { color: var(--blanc); }
+
+/* ---- Schedule ---- */
+.schedule {
+  padding: 110px 40px;
+  max-width: 1240px;
+  margin: 0 auto;
+}
+.schedule-eyebrow {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 22px;
+}
+.schedule-eyebrow::before {
+  content: '';
+  display: block;
+  width: 32px; height: 1px;
+  background: var(--rouge);
+}
+.schedule-eyebrow span {
+  font-family: var(--fb);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--rouge);
+  font-weight: 600;
+}
+.schedule h2 {
+  font-family: var(--fb);
+  font-weight: 700;
+  font-size: clamp(36px, 4.8vw, 64px);
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+  color: var(--rouge);
+  margin-bottom: 48px;
+}
+.schedule h2 .it {
+  font-family: var(--fs);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--bordeaux);
+  opacity: 0.6;
+  display: block;
+  font-size: 0.5em;
+  margin-top: 8px;
+}
+
+/* Item: time | title | speakers */
+.slot {
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  gap: 60px;
+  padding: 36px 0;
+  border-top: 1px solid var(--hairline);
+  align-items: start;
+}
+.slot:last-child { border-bottom: 1px solid var(--hairline); }
+.slot-time {
+  font-family: var(--fb);
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 1.0;
+  color: var(--rouge);
+  letter-spacing: -0.01em;
+  position: sticky; top: 80px;
+}
+.slot-time small {
+  display: block;
+  font-family: var(--fb);
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--doux);
+  margin-top: 8px;
+}
+.slot-body { display: flex; flex-direction: column; gap: 18px; }
+.slot-cat {
+  font-family: var(--fb);
+  font-size: 10.5px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--rouge);
+  font-weight: 600;
+}
+.slot-title {
+  font-family: var(--fb);
+  font-weight: 700;
+  font-size: clamp(26px, 3vw, 38px);
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  color: var(--bordeaux);
+}
+.slot-title .it {
+  font-family: var(--fs);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--rouge);
+}
+.slot-speakers {
+  display: flex; gap: 24px; flex-wrap: wrap;
+  margin-top: 8px;
+}
+.speaker {
+  display: flex; gap: 14px; align-items: center;
+}
+.speaker-avatar {
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--rose-pale);
+  flex-shrink: 0;
+}
+.speaker-avatar img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+.speaker-info { display: flex; flex-direction: column; gap: 2px; }
+.speaker-nom {
+  font-family: var(--fb);
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: -0.005em;
+  color: var(--bordeaux);
+}
+.speaker-role {
+  font-family: var(--fb);
+  font-size: 12px;
+  color: var(--doux);
+}
+.speaker-ig {
+  font-family: var(--fb);
+  font-size: 11px;
+  color: var(--rouge);
+  margin-top: 2px;
+  letter-spacing: 0.02em;
+}
+.speaker-ig:hover { text-decoration: underline; }
+
+/* Two parallel slots */
+.parallel {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+  background: var(--hairline);
+  border: 1px solid var(--hairline);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-top: 8px;
+}
+.parallel-track {
+  background: var(--ivoire);
+  padding: 24px;
+  display: flex; flex-direction: column;
+  gap: 14px;
+}
+.parallel-tag {
+  font-family: var(--fb);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--rouge);
+  font-weight: 600;
+}
+.parallel-title {
+  font-family: var(--fb);
+  font-weight: 700;
+  font-size: 19px;
+  line-height: 1.15;
+  letter-spacing: -0.005em;
+  color: var(--bordeaux);
+}
+.parallel-title .it {
+  font-family: var(--fs);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--rouge);
+}
+.parallel-speakers {
+  display: flex; gap: 14px; flex-wrap: wrap;
+  margin-top: 4px;
+}
+
+/* Plain slot (no speakers, just info) */
+.slot.plain .slot-title { font-size: 22px; color: var(--rouge); }
+.slot.plain .slot-body p {
+  font-family: var(--fb);
+  font-size: 14px;
+  color: var(--doux);
+  line-height: 1.6;
+}
+
+/* ---- EXPOSITION ---- */
+.expo {
+  background: var(--rose-pale);
+  padding: 110px 40px;
+}
+.expo-inner {
+  max-width: 1240px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 80px;
+  align-items: start;
+}
+.expo-list {
+  display: flex; flex-direction: column;
+}
+.expo-list a {
+  font-family: var(--fb);
+  font-weight: 700;
+  font-size: clamp(22px, 2.4vw, 32px);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  padding: 18px 0;
+  color: var(--bordeaux);
+  border-bottom: 1px solid rgba(81, 0, 4, 0.18);
+  display: flex; justify-content: space-between; align-items: center;
+  transition: color .2s, padding-left .2s;
+}
+.expo-list a:first-child { border-top: 1px solid rgba(81, 0, 4, 0.18); }
+.expo-list a:hover { color: var(--rouge); padding-left: 8px; }
+.expo-list a::after {
+  content: '↗';
+  font-family: var(--fb); font-weight: 500;
+  font-size: 18px;
+  color: var(--rouge);
+  opacity: 0.6;
+}
+
+/* ---- PARTENAIRES ---- */
+.prog-partners {
+  background: var(--bordeaux);
+  color: var(--blanc);
+  padding: 100px 40px;
+}
+.prog-partners-inner {
+  max-width: 1240px;
+  margin: 0 auto;
+}
+.prog-partners h2 {
+  font-family: var(--fb);
+  font-weight: 700;
+  font-size: clamp(32px, 4vw, 52px);
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+  color: var(--blanc);
+  margin-bottom: 50px;
+}
+.prog-partners h2 .it {
+  font-family: var(--fs);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--rose);
+  display: block;
+  font-size: 0.5em;
+  margin-top: 8px;
+}
+.partners-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.partner {
+  padding: 30px 0;
+  border-top: 1px solid rgba(255,255,255,0.18);
+}
+.partner .k {
+  font-family: var(--fb);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--rose);
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+.partner .v {
+  font-family: var(--fb);
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: -0.005em;
+  color: var(--blanc);
+}
+
+/* ---- Sub footer for programme ---- */
+.prog-back {
+  background: var(--ivoire);
+  padding: 80px 40px;
+  text-align: center;
+  border-bottom: 1px solid var(--hairline);
+}
+.prog-back h3 {
+  font-family: var(--fb);
+  font-weight: 700;
+  font-size: 28px;
+  letter-spacing: -0.015em;
+  color: var(--rouge);
+  margin-bottom: 18px;
+}
+.prog-back p {
+  font-family: var(--fb);
+  font-size: 15px;
+  color: var(--doux);
+  max-width: 540px;
+  margin: 0 auto 28px;
+  line-height: 1.55;
+}
+.prog-back .btn {
+  background: var(--rouge);
+  color: var(--blanc);
+  padding: 14px 26px;
+  border-radius: 999px;
+  font-family: var(--fb);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+.prog-back .btn:hover { background: var(--bordeaux); }
+
+/* ---- Responsive ---- */
+@media (max-width: 900px) {
+  .prog-hero { padding: 130px 22px 70px; }
+  .schedule, .expo, .prog-partners, .prog-back { padding: 70px 22px; }
+  .day-strip { padding: 12px 22px; }
+  .day-strip-right { display: none; }
+  .slot { grid-template-columns: 1fr; gap: 18px; padding: 28px 0; }
+  .slot-time { position: static; font-size: 18px; }
+  .parallel { grid-template-columns: 1fr; }
+  .partners-grid { grid-template-columns: 1fr; gap: 0; }
+  .expo-inner { grid-template-columns: 1fr; gap: 40px; }
+  .prog-meta { gap: 18px; }
+  .prog-meta > div { min-width: 100%; }
+}
+</style>
+</head>
+<body class="prog-page">
+
+<!-- Day strip -->
+<div class="day-strip">
+  <div class="day-strip-left">Festival Liberté, Chérie ! · 14 février 2026</div>
+  <div class="day-strip-right">
+    <a href="#programme">Programme</a>
+    <a href="#expo">Exposition</a>
+    <a href="#partenaires-prog">Partenaires</a>
+    <a href="https://my.weezevent.com/liberte-cherie" target="_blank" rel="noopener" style="color:var(--rose)">Billetterie ↗</a>
+  </div>
+</div>
+
+<!-- HERO -->
+<header class="prog-hero">
+  <div class="prog-hero-inner">
+    <div class="prog-eyebrow">— Le festival —</div>
+    <h1 class="prog-h1">
+      Programme<span class="it">samedi 14 février 2026.</span>
+    </h1>
+    <div class="prog-meta">
+      <div>
+        <div class="k">Date</div>
+        <div class="v">Samedi 14 février 2026<br>9h30 → 19h</div>
+      </div>
+      <div>
+        <div class="k">Lieu</div>
+        <div class="v">Kaskad République<br>5 rue Bouchardon, Paris 10<sup>e</sup></div>
+      </div>
+      <div>
+        <div class="k">Accès</div>
+        <div class="v">Billetterie ouverte<br>Places limitées</div>
+      </div>
+    </div>
+    <div class="prog-cta">
+      <a href="https://my.weezevent.com/liberte-cherie" target="_blank" rel="noopener" class="btn">Réserver ma place →</a>
+      <a href="index.html" class="btn btn-back">← Retour au site</a>
+    </div>
+  </div>
+</header>
+
+<!-- PROGRAMME -->
+<section class="schedule" id="programme">
+  <div class="schedule-eyebrow"><span>Heure par heure</span></div>
+  <h2>La journée<span class="it">en huit moments.</span></h2>
+
+  <!-- 9h30 -->
+  <div class="slot plain">
+    <div class="slot-time">9h30<small>Accueil</small></div>
+    <div class="slot-body">
+      <div class="slot-title">Accueil &amp; café</div>
+      <p>On vous attend dès l'ouverture des portes — café, viennoiseries, premiers échanges.</p>
+    </div>
+  </div>
+
+  <!-- 10h00 -->
+  <div class="slot">
+    <div class="slot-time">10h00<small>10h00 — 10h45</small></div>
+    <div class="slot-body">
+      <div class="slot-cat">Atelier</div>
+      <div class="slot-title">Trouver <span class="it">sa voix</span></div>
+      <div class="slot-speakers">
+        <div class="speaker">
+          <div class="speaker-avatar"><img src="https://cdn.prod.website-files.com/6985f7eafb0c704b7c06468e/698633f0e052c9604d8fb632_Juliette%20Ray.jpeg" alt="Juliette Ray"></div>
+          <div class="speaker-info">
+            <span class="speaker-nom">Juliette Ray</span>
+            <span class="speaker-role">Experte prise de parole</span>
+            <a href="https://www.instagram.com/julietteray_/" target="_blank" rel="noopener" class="speaker-ig">@julietteray_</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 10h45 -->
+  <div class="slot">
+    <div class="slot-time">10h45<small>10h45 — 11h30</small></div>
+    <div class="slot-body">
+      <div class="slot-cat">Atelier</div>
+      <div class="slot-title">Blocages <span class="it">&amp; intuitions</span></div>
+      <div class="slot-speakers">
+        <div class="speaker">
+          <div class="speaker-avatar"><img src="https://cdn.prod.website-files.com/6985f7eafb0c704b7c06468e/6989c468c220f9f893d4624a_WhatsApp%20Image%202026-02-09%20at%2011.23.09.jpeg" alt="Cloé Dana"></div>
+          <div class="speaker-info">
+            <span class="speaker-nom">Cloé Dana</span>
+            <span class="speaker-role">Entrepreneuse</span>
+            <a href="https://www.instagram.com/cloedana_/" target="_blank" rel="noopener" class="speaker-ig">@cloedana_</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 11h45 -->
+  <div class="slot plain">
+    <div class="slot-time">11h45<small>11h45 — 12h30</small></div>
+    <div class="slot-body">
+      <div class="slot-title">Cercle de parole</div>
+      <p>Un temps collectif, à voix nue, autour d'une question lancée au début et tenue jusqu'au bout.</p>
+    </div>
+  </div>
+
+  <!-- 12h30 -->
+  <div class="slot plain">
+    <div class="slot-time">12h30<small>12h30 — 14h00</small></div>
+    <div class="slot-body">
+      <div class="slot-title">Déjeuner</div>
+      <p>Entrée, plat, dessert — avec les intervenantes. Une table, un moment qui prolonge la matinée.</p>
+    </div>
+  </div>
+
+  <!-- 14h30 PARALLEL -->
+  <div class="slot">
+    <div class="slot-time">14h30<small>14h30 — 15h30 · 2 sessions parallèles</small></div>
+    <div class="slot-body">
+      <div class="slot-cat">Conférences en parallèle</div>
+      <div class="parallel">
+        <div class="parallel-track">
+          <div class="parallel-tag">Session A</div>
+          <div class="parallel-title">Les dates, <span class="it">on en parle ?</span></div>
+          <div class="parallel-speakers">
+            <div class="speaker">
+              <div class="speaker-avatar"><img src="https://cdn.prod.website-files.com/6985f7eafb0c704b7c06468e/69876e697cab858de62a6916_Alice%20Weill.jpeg" alt="Alice Weill"></div>
+              <div class="speaker-info">
+                <span class="speaker-nom">Alice Weill</span>
+                <span class="speaker-role">Journaliste · podcast host</span>
+                <a href="https://www.instagram.com/alice.weill/" target="_blank" rel="noopener" class="speaker-ig">@alice.weill</a>
+              </div>
+            </div>
+            <div class="speaker">
+              <div class="speaker-avatar"><img src="https://cdn.prod.website-files.com/6985f7eafb0c704b7c06468e/698b2f0b76ef8151342d037b_Delouison%20(1).jpg" alt="Delouison"></div>
+              <div class="speaker-info">
+                <span class="speaker-nom">Delouison</span>
+                <span class="speaker-role">Journaliste</span>
+                <a href="https://www.instagram.com/delouison/" target="_blank" rel="noopener" class="speaker-ig">@delouison</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="parallel-track">
+          <div class="parallel-tag">Session B</div>
+          <div class="parallel-title">Vers <span class="it">l'indépendance financière</span></div>
+          <div class="parallel-speakers">
+            <div class="speaker">
+              <div class="speaker-avatar"><img src="https://cdn.prod.website-files.com/6985f7eafb0c704b7c06468e/69876e697275dde67f5fc703_Maelle%20Caravaca%20-%20Grande.jpeg" alt="Maëlle Caravaca"></div>
+              <div class="speaker-info">
+                <span class="speaker-nom">Maëlle Caravaca</span>
+                <span class="speaker-role">Autrice · conseillère</span>
+                <a href="https://www.instagram.com/maellecaravaca/" target="_blank" rel="noopener" class="speaker-ig">@maellecaravaca</a>
+              </div>
+            </div>
+            <div class="speaker">
+              <div class="speaker-avatar"><img src="https://cdn.prod.website-files.com/6985f7eafb0c704b7c06468e/69876e6965707fd60431830d_Lea%20Lejeune%20escalier%20mode%20portrait%20Pierre%20Morel.JPG" alt="Léa Lejeune"></div>
+              <div class="speaker-info">
+                <span class="speaker-nom">Léa Lejeune</span>
+                <span class="speaker-role">Journaliste · entrepreneuse</span>
+                <a href="https://www.instagram.com/lea_lejeune/" target="_blank" rel="noopener" class="speaker-ig">@lea_lejeune</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 15h45 PARALLEL -->
+  <div class="slot">
+    <div class="slot-time">15h45<small>15h45 — 16h30 · 2 sessions parallèles</small></div>
+    <div class="slot-body">
+      <div class="slot-cat">Conférences en parallèle</div>
+      <div class="parallel">
+        <div class="parallel-track">
+          <div class="parallel-tag">Session A</div>
+          <div class="parallel-title">Care <span class="it">&amp; vulnérabilité</span></div>
+          <div class="parallel-speakers">
+            <div class="speaker">
+              <div class="speaker-avatar"><img src="https://cdn.prod.website-files.com/6985f7eafb0c704b7c06468e/69876e693b7bb8b3fccdffa9_Eva%20Sadoun.png" alt="Eva Sadoun"></div>
+              <div class="speaker-info">
+                <span class="speaker-nom">Eva Sadoun</span>
+                <span class="speaker-role">Podcast host · entrepreneuse</span>
+                <a href="https://www.instagram.com/eva_sadoun/" target="_blank" rel="noopener" class="speaker-ig">@eva_sadoun</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="parallel-track">
+          <div class="parallel-tag">Session B</div>
+          <div class="parallel-title">Nouvelle forme de couple <span class="it">— la non-monogamie éthique</span></div>
+          <div class="parallel-speakers">
+            <div class="speaker">
+              <div class="speaker-avatar"><img src="https://cdn.prod.website-files.com/6985f7eafb0c704b7c06468e/69876e6961b02147e9ffd6ae_Eve%20simonet.jpg" alt="Eve Simonet"></div>
+              <div class="speaker-info">
+                <span class="speaker-nom">Eve Simonet</span>
+                <span class="speaker-role">Réalisatrice · autrice</span>
+                <a href="https://www.instagram.com/eve_simonet/" target="_blank" rel="noopener" class="speaker-ig">@eve_simonet</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 16h45 -->
+  <div class="slot">
+    <div class="slot-time">16h45<small>16h45 — 17h45</small></div>
+    <div class="slot-body">
+      <div class="slot-cat">Table ronde</div>
+      <div class="slot-title">Famille — <span class="it">les nouveaux modèles</span></div>
+      <div class="slot-speakers">
+        <div class="speaker">
+          <div class="speaker-avatar"><img src="https://cdn.prod.website-files.com/6985f7eafb0c704b7c06468e/69876e694347e69db2229ec3_Sarah%20Oiknine.png" alt="Sarah Oiknine"></div>
+          <div class="speaker-info">
+            <span class="speaker-nom">Sarah Oiknine</span>
+            <span class="speaker-role">Invitée</span>
+          </div>
+        </div>
+        <div class="speaker">
+          <div class="speaker-avatar"><img src="https://cdn.prod.website-files.com/6985f7eafb0c704b7c06468e/69876e693b7bb8b3fccdffa9_Eva%20Sadoun.png" alt="Eva Sadoun"></div>
+          <div class="speaker-info">
+            <span class="speaker-nom">Eva Sadoun</span>
+            <span class="speaker-role">Podcast host · entrepreneuse</span>
+          </div>
+        </div>
+        <div class="speaker">
+          <div class="speaker-avatar"><img src="https://cdn.prod.website-files.com/6985f7eafb0c704b7c06468e/69860bfec306b282e9cbb25d_Steph%201.png" alt="Stéphanie Matharet"></div>
+          <div class="speaker-info">
+            <span class="speaker-nom">Stéphanie Matharet</span>
+            <span class="speaker-role">Direction artistique LC</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 17h15 -->
+  <div class="slot">
+    <div class="slot-time">17h15<small>17h15 — 18h15</small></div>
+    <div class="slot-body">
+      <div class="slot-cat">Conversation</div>
+      <div class="slot-title">Les œufs <span class="it">au frigo ?</span></div>
+      <div class="slot-speakers">
+        <div class="speaker">
+          <div class="speaker-avatar"><img src="https://cdn.prod.website-files.com/6985f7eafb0c704b7c06468e/69876e69c100b97090445012_Rachel-flore%20Pardo.jpg" alt="Rachel-Flore Pardo"></div>
+          <div class="speaker-info">
+            <span class="speaker-nom">Rachel-Flore Pardo</span>
+            <span class="speaker-role">Avocate · activiste</span>
+            <a href="https://www.instagram.com/rachelflore/" target="_blank" rel="noopener" class="speaker-ig">@rachelflore</a>
+          </div>
+        </div>
+        <div class="speaker">
+          <div class="speaker-avatar"><img src="https://cdn.prod.website-files.com/6985f7eafb0c704b7c06468e/69876e690ba9ebf5e035498b_Julia%20Layani.png" alt="Julia Layani"></div>
+          <div class="speaker-info">
+            <span class="speaker-nom">Julia Layani</span>
+            <span class="speaker-role">Autrice · podcast host</span>
+            <a href="https://www.instagram.com/julialayani/" target="_blank" rel="noopener" class="speaker-ig">@julialayani</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 19h -->
+  <div class="slot plain">
+    <div class="slot-time">19h<small>Cocktail</small></div>
+    <div class="slot-body">
+      <div class="slot-title">Cocktail de clôture</div>
+      <p>Pour prolonger la journée, autour d'un verre — avec celles qui ont parlé, et celles qui ont écouté.</p>
+    </div>
+  </div>
+</section>
+
+<!-- EXPOSITION -->
+<section class="expo" id="expo">
+  <div class="expo-inner">
+    <div>
+      <div class="schedule-eyebrow"><span>Toute la journée</span></div>
+      <h2 style="color:var(--rouge); font-family:var(--fb); font-weight:700; font-size:clamp(36px,4.8vw,64px); line-height:1.02; letter-spacing:-0.025em">Exposition<br><span style="font-family:var(--fs); font-style:italic; font-weight:400; color:var(--bordeaux); opacity:0.6; font-size:0.5em; display:block; margin-top:8px">collective.</span></h2>
+      <p style="font-family:var(--fb); font-size:15px; line-height:1.6; color:var(--bordeaux); max-width:380px; margin-top:24px; opacity:0.75">Cinq artistes invitées à occuper les murs de Kaskad pendant toute la journée du festival. Œuvres à découvrir, à acheter, à emporter.</p>
+    </div>
+    <div class="expo-list">
+      <a href="https://www.instagram.com/agathechebassier/" target="_blank" rel="noopener">Agathe Chébassier</a>
+      <a href="https://www.instagram.com/camille_de_cussac/" target="_blank" rel="noopener">Camille De Cussac</a>
+      <a href="https://www.instagram.com/elsamartino_/" target="_blank" rel="noopener">Elsa Martino</a>
+      <a href="https://www.instagram.com/jessicalisse/" target="_blank" rel="noopener">Jessica Lisse</a>
+      <a href="https://www.instagram.com/val_dardel/" target="_blank" rel="noopener">Valentine Dardel</a>
+    </div>
+  </div>
+</section>
+
+<!-- PARTENAIRES -->
+<section class="prog-partners" id="partenaires-prog">
+  <div class="prog-partners-inner">
+    <div class="schedule-eyebrow" style="margin-bottom:22px"><span style="color:var(--rose)">— Avec —</span></div>
+    <h2>Nos partenaires<span class="it">du festival.</span></h2>
+    <div class="partners-grid">
+      <div class="partner">
+        <div class="k">Traiteur</div>
+        <div class="v">Café Cœur</div>
+      </div>
+      <div class="partner">
+        <div class="k">Set design</div>
+        <div class="v">Marine Avignon</div>
+      </div>
+      <div class="partner">
+        <div class="k">Librairie</div>
+        <div class="v">Vous dire encore</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BACK -->
+<section class="prog-back">
+  <h3>Le reste de la saison</h3>
+  <p>Trois talks, trois dîners, une retraite au vert — à retrouver sur la page principale.</p>
+  <a href="index.html" class="btn">← Retour à Liberté, Chérie&nbsp;!</a>
+</section>
+
+</body>
+</html>

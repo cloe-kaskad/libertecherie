@@ -1,0 +1,29 @@
+# netlify.toml — configuration Netlify (déploiement par glisser-déposer)
+
+# Emplacement des fonctions serverless (newsletter + médiathèque Airtable)
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
+# Anciens liens vers /Liberte Cherie.html → redirigés vers l'accueil
+[[redirects]]
+  from = "/Liberte%20Cherie.html"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/Liberte Cherie.html"
+  to = "/"
+  status = 301
+
+# Joli alias : POST /api/subscribe → fonction subscribe (newsletter)
+[[redirects]]
+  from = "/api/subscribe"
+  to = "/.netlify/functions/subscribe"
+  status = 200
+
+# Joli alias : GET /api/mediatheque → fonction mediatheque (lecture Airtable)
+[[redirects]]
+  from = "/api/mediatheque"
+  to = "/.netlify/functions/mediatheque"
+  status = 200
