@@ -29,7 +29,7 @@ const FIELD_CANDIDATES = {
   auteur:       ['Auteur', 'Auteur·ice', 'Autrice', 'Auteur·rice'],
   type:         ['Type'],
   recommandePar:['Recommandé par', 'Recommandée par', 'Recommandation', 'Recommandé·e par'],
-  themes:       ['Thème(s) LC', 'Thèmes LC', 'Thème(s)', 'Thèmes', 'Theme(s) LC', 'Thematiques'],
+  themes:       ['Thème LC', 'Thème(s) LC', 'Thèmes LC', 'Theme LC', 'Thème(s)', 'Thèmes', 'Theme(s) LC', 'Thematiques'],
   description:  ['Description', 'Résumé', 'Resume', 'Résumé automatique (AI)'],
   cover:        ['Image de couverture', 'Couverture', 'Cover', 'Image', 'Visuel'],
   lien:         ['Lien', 'URL', 'Url', 'Link'],
@@ -60,6 +60,13 @@ function coverUrl(att) {
 function normalize(record) {
   const f = record.fields || {};
   let themes = pick(f, FIELD_CANDIDATES.themes);
+  // Filet de sécurité : si aucun nom connu ne correspond, on cherche n'importe
+  // quelle colonne dont le nom contient "thème/theme" (insensible aux accents).
+  if (themes === undefined) {
+    for (const k of Object.keys(f)) {
+      if (/th[eèé]me/i.test(k)) { themes = f[k]; break; }
+    }
+  }
   if (typeof themes === 'string') themes = themes.split(',').map(s => s.trim()).filter(Boolean);
   if (!Array.isArray(themes)) themes = themes ? [themes] : [];
 
