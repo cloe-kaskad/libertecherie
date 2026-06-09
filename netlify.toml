@@ -27,9 +27,3 @@
   from = "/api/mediatheque"
   to = "/.netlify/functions/mediatheque"
   status = 200
-
-# URL propre : /newsletter → /newsletter.html
-[[redirects]]
-  from = "/newsletter"
-  to = "/newsletter.html"
-  status = 200
