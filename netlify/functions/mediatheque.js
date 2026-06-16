@@ -29,7 +29,7 @@ const FIELD_CANDIDATES = {
   auteur:       ['Auteur', 'Auteur·ice', 'Autrice', 'Auteur·rice'],
   type:         ['Type'],
   recommandePar:['Recommandé par', 'Recommandée par', 'Recommandation', 'Recommandé·e par'],
-  themes:       ['Thème(s) LC', 'Thèmes LC', 'Thème(s)', 'Thèmes', 'Theme(s) LC', 'Thematiques'],
+  themes:       ['Thème LC', 'Thème(s) LC', 'Thèmes LC', 'Theme LC', 'Thème', 'Themes', 'Thème(s)', 'Thèmes', 'Theme(s) LC', 'Thematiques', 'Tags', 'Catégories', 'Categories'],
   description:  ['Description', 'Résumé', 'Resume', 'Résumé automatique (AI)'],
   cover:        ['Image de couverture', 'Couverture', 'Cover', 'Image', 'Visuel'],
   lien:         ['Lien', 'URL', 'Url', 'Link'],
@@ -60,6 +60,25 @@ function coverUrl(att) {
 function normalize(record) {
   const f = record.fields || {};
   let themes = pick(f, FIELD_CANDIDATES.themes);
+  // Filet 1 : cherche n'importe quelle colonne dont le nom contient "thème/theme" (insensible aux accents).
+  if (themes === undefined) {
+    for (const k of Object.keys(f)) {
+      if (/th[eèé]me/i.test(k)) { themes = f[k]; break; }
+    }
+  }
+  // Filet 2 : cherche n'importe quelle colonne dont la valeur est un tableau de strings
+  // (c'est le format Airtable des champs "Multiple select") — exclut les champs connus.
+  const KNOWN_ARRAY_FIELDS = ['Image de couverture', 'Couverture', 'Cover', 'Image', 'Visuel', 'Recommandé par', 'Recommandée par'];
+  if (themes === undefined || (Array.isArray(themes) && themes.length === 0)) {
+    for (const k of Object.keys(f)) {
+      if (KNOWN_ARRAY_FIELDS.includes(k)) continue;
+      if (FIELD_CANDIDATES.type.includes(k)) continue;
+      const v = f[k];
+      if (Array.isArray(v) && v.length > 0 && typeof v[0] === 'string' && !v[0].startsWith('att')) {
+        themes = v; break;
+      }
+    }
+  }
   if (typeof themes === 'string') themes = themes.split(',').map(s => s.trim()).filter(Boolean);
   if (!Array.isArray(themes)) themes = themes ? [themes] : [];
 
@@ -135,6 +154,18 @@ exports.handler = async (event) => {
       records = records.concat(data.records || []);
       offset = data.offset;
     } while (offset);
+
+    // MODE DEBUG : ?debug=1 → renvoie les noms de colonnes du 1er enregistrement
+    if (event.queryStringParameters && event.queryStringParameters.debug === '1') {
+      const firstRecord = records[0];
+      const fieldNames = firstRecord ? Object.keys(firstRecord.fields || {}) : [];
+      const sample = {};
+      fieldNames.forEach(k => {
+        const v = firstRecord.fields[k];
+        sample[k] = Array.isArray(v) ? `[Array(${v.length})] ${JSON.stringify(v[0])}` : typeof v === 'string' ? v.slice(0,60) : v;
+      });
+      return { statusCode: 200, headers: cors, body: JSON.stringify({ totalRecords: records.length, fieldNames, sample }) };
+    }
 
     // normalise + masque les statuts non publics
     const items = records
