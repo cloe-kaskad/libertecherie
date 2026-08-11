@@ -27,3 +27,8 @@
   from = "/api/mediatheque"
   to = "/.netlify/functions/mediatheque"
   status = 200
+# Joli alias : GET /api/evenements → fonction evenements (billetterie)
+[[redirects]]
+  from = "/api/evenements"
+  to = "/.netlify/functions/evenements"
+  status = 200
