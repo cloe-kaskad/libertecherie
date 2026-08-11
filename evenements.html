@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-K38STFP6');</script>
+<!-- End Google Tag Manager -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Les Événements — Liberté, Chérie !</title>
+<meta name="description" content="Talks, dîners et rituels Liberté, Chérie ! — les prochaines dates et ce qui a déjà eu lieu.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://libertecherie.paris/evenements">
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://libertecherie.paris/evenements">
+<meta property="og:title" content="Les Événements — Liberté, Chérie !">
+<meta property="og:description" content="Talks, dîners et rituels Liberté, Chérie ! — les prochaines dates et ce qui a déjà eu lieu.">
+<meta property="og:image" content="https://libertecherie.paris/assets/img/og-libertecherie.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="Liberté, Chérie !">
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Les Événements — Liberté, Chérie !">
+<meta name="twitter:description" content="Talks, dîners et rituels Liberté, Chérie ! — les prochaines dates et ce qui a déjà eu lieu.">
+<meta name="twitter:image" content="https://libertecherie.paris/assets/img/og-libertecherie.jpg">
+<link rel="icon" type="image/jpeg" href="assets/img/favicon.jpg">
+<link rel="apple-touch-icon" href="assets/img/favicon.jpg">
+<link rel="stylesheet" href="assets/styles.css">
+<style>
+  /* ============ ÉVÉNEMENTS ============ */
+  .ev-page { background: var(--ivoire); color: var(--encre); min-height: 100vh; }
+
+  /* HERO — même modèle que la Médiathèque */
+  .ev-hero { background: var(--rose); padding: 150px 40px 50px; position: relative; overflow: hidden; }
+  .ev-hero-inner { max-width: 1240px; margin: 0 auto; position: relative; z-index: 2; }
+  .ev-h1 { margin: 0; line-height: 1; display: flex; flex-direction: column; align-items: flex-start; }
+  .ev-title-big { display: block; font-family: var(--fh); font-weight: 400; font-size: clamp(46px, 9.6vw, 142px); line-height: 0.86; letter-spacing: -0.012em; color: var(--rouge); text-transform: uppercase; }
+  .ev-h1-sub { margin: 22px 0 0 10px; max-width: 700px; font-size: clamp(14px, 1.5vw, 18px); line-height: 1.5; color: var(--bordeaux); }
+  .ev-h1-sub strong { font-family: var(--fb); font-weight: 700; color: var(--encre); }
+  .ev-h1-sub em { font-family: var(--fs); font-style: italic; font-weight: 400; }
+  .ev-back { display: inline-flex; margin-top: 28px; align-items: center; gap: 8px; background: transparent; color: var(--bordeaux); border: 1px solid rgba(81,0,4,0.3); padding: 12px 20px; border-radius: 999px; font-family: var(--fb); font-size: 12.5px; font-weight: 600; letter-spacing: 0.04em; text-decoration: none; transition: background .2s, color .2s, transform .2s; }
+  .ev-back:hover { background: var(--bordeaux); color: var(--blanc); transform: translateY(-1px); }
+
+  /* LAYOUT */
+  .ev-wrap { max-width: 1160px; margin: 0 auto; padding: 64px 40px 120px; }
+  .ev-section + .ev-section { margin-top: 96px; }
+  .ev-section-head { display: flex; align-items: baseline; gap: 16px; margin-bottom: 34px; padding-bottom: 16px; border-bottom: 1px solid var(--hairline); }
+  .ev-section-title { font-family: var(--fb); font-weight: 700; font-size: clamp(24px, 3vw, 34px); line-height: 1.1; letter-spacing: -0.02em; color: var(--rouge); }
+  .ev-section-title .it { font-family: var(--fs); font-style: italic; font-weight: 400; color: var(--bordeaux); }
+
+  /* ---- Carte À VENIR ---- */
+  .ev-list { display: flex; flex-direction: column; gap: 30px; }
+  .ev-card { background: var(--blanc); border: 1px solid var(--hairline); border-radius: 12px; overflow: hidden; display: grid; grid-template-columns: 1.05fr 1fr; align-items: stretch; transition: transform .2s, box-shadow .2s, border-color .2s; }
+  .ev-card:hover { transform: translateY(-3px); box-shadow: 0 24px 56px rgba(81,0,4,0.1); border-color: rgba(81,0,4,0.18); }
+  .ev-cover { position: relative; background: var(--rose-pale); aspect-ratio: 3 / 2; overflow: hidden; }
+  .ev-cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .ev-cover-ph { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: var(--rose-pale); }
+  .ev-cover-ph span { font-family: var(--fh); font-size: 40px; color: var(--rouge); opacity: 0.35; }
+
+  .ev-body { padding: 36px 38px 34px; display: flex; flex-direction: column; }
+  .ev-format { font-family: var(--fb); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--rouge); font-weight: 600; margin-bottom: 12px; }
+  .ev-titre { font-family: var(--fb); font-weight: 700; font-size: clamp(22px, 2.3vw, 30px); line-height: 1.15; letter-spacing: -0.02em; color: var(--bordeaux); margin-bottom: 12px; text-wrap: pretty; }
+  .ev-when { font-family: var(--fb); font-size: 14.5px; font-weight: 600; color: var(--encre); margin-bottom: 5px; }
+  .ev-meta { font-family: var(--fs); font-style: italic; font-size: 14.5px; color: var(--bordeaux); opacity: 0.8; }
+  .ev-accroche { font-family: var(--fb); font-size: 14.5px; line-height: 1.6; color: var(--encre); opacity: 0.84; margin-top: 16px; text-wrap: pretty; }
+  .ev-foot { margin-top: auto; padding-top: 26px; display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+  .ev-prix { font-family: var(--fb); font-weight: 700; font-size: 19px; color: var(--bordeaux); letter-spacing: -0.01em; }
+  .ev-action { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; }
+
+  .ev-btn { display: inline-flex; align-items: center; justify-content: center; font-family: var(--fb); font-size: 14px; font-weight: 600; letter-spacing: 0.01em; padding: 14px 26px; border-radius: 999px; border: 1px solid var(--rouge); background: var(--rouge); color: var(--blanc); text-decoration: none; transition: background .2s, transform .15s; }
+  .ev-btn:hover { background: var(--rouge-deep); border-color: var(--rouge-deep); color: var(--blanc); transform: translateY(-1px); }
+  .ev-btn.is-disabled { background: transparent; border-color: rgba(81,0,4,0.2); color: var(--doux); cursor: default; pointer-events: none; }
+  .ev-soon { display: inline-flex; align-items: center; justify-content: center; font-family: var(--fb); font-size: 13px; font-weight: 600; letter-spacing: 0.03em; padding: 14px 24px; border-radius: 999px; border: 1px dashed rgba(81,0,4,0.28); color: var(--bordeaux); background: var(--rose-pale); }
+  .ev-places { font-family: var(--fs); font-style: italic; font-size: 13px; color: var(--rouge); }
+
+  /* Teasing : atténué, même taille */
+  .ev-card.is-teasing .ev-cover img { filter: saturate(0.35); opacity: 0.9; }
+  .ev-card.is-teasing .ev-titre,
+  .ev-card.is-teasing .ev-when { color: var(--bordeaux); opacity: 0.72; }
+  .ev-card.is-teasing .ev-accroche,
+  .ev-card.is-teasing .ev-meta { opacity: 0.62; }
+  .ev-card.is-teasing .ev-prix { opacity: 0.6; }
+  .ev-card.is-complet .ev-cover img { filter: saturate(0.55); }
+
+  /* ---- CE QUI A EU LIEU ---- */
+  .ev-past-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(268px, 1fr)); gap: 24px; }
+  .ev-past { background: var(--blanc); border: 1px solid var(--hairline); border-radius: 10px; overflow: hidden; display: flex; flex-direction: column; }
+  .ev-past-cover { position: relative; background: var(--rose-pale); aspect-ratio: 3 / 2; overflow: hidden; }
+  .ev-past-cover img { width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(0.7); }
+  .ev-past-body { padding: 20px 22px 22px; }
+  .ev-past-titre { font-family: var(--fb); font-weight: 700; font-size: 17px; line-height: 1.25; letter-spacing: -0.01em; color: var(--bordeaux); margin-bottom: 6px; }
+  .ev-past-when { font-family: var(--fb); font-size: 12.5px; color: var(--doux); margin-bottom: 9px; }
+  .ev-past-accroche { font-family: var(--fb); font-size: 13.5px; line-height: 1.5; color: var(--encre); opacity: 0.78; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+  /* ---- ÉTATS : note, squelettes ---- */
+  .ev-note { font-family: var(--fs); font-style: italic; font-size: 17px; line-height: 1.6; color: var(--bordeaux); padding: 26px 0; }
+  .ev-note a { color: var(--rouge); text-decoration: underline; text-underline-offset: 3px; }
+  .ev-note a:hover { color: var(--bordeaux); }
+
+  .ev-skel { background: var(--blanc); border: 1px solid var(--hairline); border-radius: 12px; overflow: hidden; display: grid; grid-template-columns: 1.05fr 1fr; }
+  .ev-skel-cover { aspect-ratio: 3 / 2; background: var(--rose-pale); }
+  .ev-skel-body { padding: 36px 38px 34px; display: flex; flex-direction: column; gap: 12px; }
+  .ev-skel-line { display: block; height: 12px; border-radius: 999px; background: var(--rose-pale); }
+  .ev-skel-line.tall { height: 26px; }
+  .ev-skel-line.w30 { width: 30%; } .ev-skel-line.w50 { width: 50%; }
+  .ev-skel-line.w70 { width: 70%; } .ev-skel-line.w80 { width: 80%; } .ev-skel-line.w90 { width: 90%; }
+  .ev-skel-btn { display: block; margin-top: auto; width: 172px; height: 46px; border-radius: 999px; background: var(--rose-pale); align-self: flex-end; }
+  .ev-skel-cover, .ev-skel-line, .ev-skel-btn { animation: evPulse 1.5s ease-in-out infinite; }
+  @keyframes evPulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.55; } }
+
+  @media (max-width: 860px) {
+    .ev-card, .ev-skel { grid-template-columns: 1fr; }
+    .ev-body, .ev-skel-body { padding: 26px 24px 28px; }
+    .ev-foot { align-items: flex-start; }
+    .ev-action { align-items: flex-start; width: 100%; }
+    .ev-btn, .ev-soon { width: 100%; }
+    .ev-skel-btn { align-self: flex-start; width: 100%; }
+  }
+  @media (max-width: 720px) {
+    .ev-hero { padding: 100px 22px 40px; }
+    .ev-wrap { padding: 44px 22px 80px; }
+    .ev-section + .ev-section { margin-top: 64px; }
+    .ev-past-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 16px; }
+    .ev-past-body { padding: 15px 16px 17px; }
+    .ev-past-titre { font-size: 15.5px; }
+  }
+</style>
+</head>
+<body class="ev-page">
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K38STFP6"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<!-- NAV -->
+<nav class="top scrolled" id="nav">
+  <a href="index.html" class="nav-logo">
+    <img src="assets/img/logo-blanc.png" alt="Liberté, Chérie !" class="nav-logo-img">
+    <span class="nav-logo-text">LIBERTÉ, CHÉRIE&nbsp;!</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="evenements.html" aria-current="page">Les événements</a></li>
+    <li><a href="index.html#invitees">Les invitées</a></li>
+    <li><a href="index.html#edito">L'Édito</a></li>
+    <li><a href="mediatheque.html">Médiathèque</a></li>
+    <li><a href="index.html#newsletter" class="nav-pill">Newsletter →</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<header class="ev-hero">
+  <div class="ev-hero-inner">
+    <h1 class="ev-h1"><span class="ev-title-big">Événements</span></h1>
+    <p class="ev-h1-sub"><strong>Talks, dîners, rituels.</strong> <em>Les prochaines dates de Liberté, Chérie&nbsp;!</em></p>
+    <a href="index.html" class="ev-back">← Retour au site</a>
+  </div>
+</header>
+
+<div class="ev-wrap">
+
+  <!-- À VENIR -->
+  <section class="ev-section">
+    <div class="ev-section-head">
+      <h2 class="ev-section-title">À <span class="it">venir</span></h2>
+    </div>
+    <div class="ev-list" id="evUpcoming"></div>
+  </section>
+
+  <!-- CE QUI A EU LIEU (masqué si vide) -->
+  <section class="ev-section" id="evPastSection" hidden>
+    <div class="ev-section-head">
+      <h2 class="ev-section-title">Ce qui <span class="it">a eu lieu</span></h2>
+    </div>
+    <div class="ev-past-grid" id="evPastGrid"></div>
+  </section>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <img src="assets/img/logo-footer.png" alt="Liberté, Chérie !" class="footer-logo-img">
+      <div class="footer-brand-fallback">Liberté,<br>Chérie&nbsp;!<span class="it">studio culturel féminin.</span></div>
+      <p class="footer-tag">Paris · Île-de-France<br>5 rue Bouchardon, Paris 10<sup>e</sup></p>
+    </div>
+    <div class="footer-col">
+      <h4>Programme</h4>
+      <a href="evenements.html">Les événements</a>
+      <a href="index.html#programme">Les Dîners</a>
+      <a href="index.html#festival">Festival 14 fév</a>
+      <a href="index.html#invitees">Les invitées</a>
+    </div>
+    <div class="footer-col">
+      <h4>Le studio</h4>
+      <a href="index.html#edito">L'Édito</a>
+      <a href="mediatheque.html">La Médiathèque</a>
+      <a href="newsletter.html">La Newsletter</a>
+      <a href="index.html#partenaires">Devenir partenaire</a>
+    </div>
+    <div class="footer-col">
+      <h4>Nous retrouver</h4>
+      <a href="mailto:bonjour@libertecherie.paris">bonjour@libertecherie.paris</a>
+      <a href="tel:+33699896560">06 99 89 65 60</a>
+      <a href="https://maps.google.com/?q=5+rue+Bouchardon+Paris" target="_blank" rel="noopener">5 rue Bouchardon →</a>
+      <div class="footer-socials">
+        <a href="https://instagram.com/libertecherie_fr" target="_blank" rel="noopener" aria-label="Instagram" class="social-link">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.43.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.43.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.43-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.43-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16M12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63a5.86 5.86 0 0 0-2.13 1.38A5.86 5.86 0 0 0 .63 4.14C.33 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.31.79.73 1.46 1.38 2.13a5.86 5.86 0 0 0 2.13 1.38c.76.3 1.64.5 2.91.56 1.28.06 1.69.07 4.95.07s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56a5.86 5.86 0 0 0 2.13-1.38 5.86 5.86 0 0 0 1.38-2.13c.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91a5.86 5.86 0 0 0-1.38-2.13A5.86 5.86 0 0 0 19.86.63C19.1.33 18.22.13 16.95.07 15.67.01 15.26 0 12 0zm0 5.84A6.16 6.16 0 1 0 12 18.16 6.16 6.16 0 0 0 12 5.84zm0 10.16A4 4 0 1 1 12 8a4 4 0 0 1 0 8zm6.41-11.85a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88z"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/company/libert%C3%A9-cherie/posts/?feedView=all" target="_blank" rel="noopener" aria-label="LinkedIn" class="social-link">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.22 8h4.56v14H.22V8zm7.5 0h4.37v1.92h.06c.61-1.15 2.1-2.36 4.32-2.36 4.62 0 5.47 3.04 5.47 6.99V22h-4.56v-6.22c0-1.49-.03-3.4-2.07-3.4-2.08 0-2.4 1.62-2.4 3.29V22H7.72V8z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Liberté, Chérie&nbsp;! — Tous droits réservés</span>
+    <span><a href="mentions-legales.html">Mentions légales</a></span>
+  </div>
+</footer>
+
+<script src="assets/evenements.js"></script>
+</body>
+</html>
