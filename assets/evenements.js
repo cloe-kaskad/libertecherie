@@ -38,6 +38,13 @@
     return (n % 1 === 0 ? n : n.toFixed(2).replace('.', ',')) + ' €';
   }
 
+  function formatJauge(j) {
+    if (j == null || j === '') return '';
+    var n = Number(j);
+    if (isNaN(n) || n <= 0) return '';
+    return (n === 1 ? '1 place maximum' : n + ' places maximum');
+  }
+
   function normStatut(s) {
     return (s || '').toString().normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim();
   }
@@ -75,6 +82,7 @@
     var meta = [];
     if (ev.lieu) meta.push('<span class="ev-lieu">' + esc(ev.lieu) + '</span>');
     var prix = formatPrix(ev.prix);
+    var infos = [prix, formatJauge(ev.jauge)].filter(Boolean).join(' · ');
 
     return '' +
       '<article class="ev-card' + (isTeasing ? ' is-teasing' : '') + (isComplet ? ' is-complet' : '') + '">' +
@@ -85,6 +93,7 @@
           '<div class="ev-when">' + esc(formatDate(ev.date)) + '</div>' +
           (meta.length ? '<div class="ev-meta">' + meta.join('') + '</div>' : '') +
           (ev.accroche ? '<p class="ev-accroche">' + esc(ev.accroche) + '</p>' : '') +
+          (infos ? '<div class="ev-infos">' + esc(infos) + '</div>' : '') +
           '<div class="ev-foot">' +
             (prix ? '<div class="ev-prix">' + esc(prix) + '</div>' : '') +
             '<div class="ev-action">' + action + placesLine(ev.placesRestantes) + '</div>' +
