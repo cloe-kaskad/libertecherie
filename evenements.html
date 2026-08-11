@@ -56,19 +56,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   /* ---- Carte À VENIR ---- */
   .ev-list { display: flex; flex-direction: column; gap: 30px; }
-  .ev-card { background: var(--blanc); border: 1px solid var(--hairline); border-radius: 12px; overflow: hidden; display: grid; grid-template-columns: 1.05fr 1fr; align-items: stretch; transition: transform .2s, box-shadow .2s, border-color .2s; }
+  .ev-card { background: var(--blanc); border: 1px solid var(--hairline); border-radius: 12px; overflow: hidden; display: grid; grid-template-columns: 40% 1fr; align-items: stretch; transition: transform .2s, box-shadow .2s, border-color .2s; }
   .ev-card:hover { transform: translateY(-3px); box-shadow: 0 24px 56px rgba(81,0,4,0.1); border-color: rgba(81,0,4,0.18); }
-  .ev-cover { position: relative; background: var(--rose-pale); aspect-ratio: 3 / 2; overflow: hidden; }
-  .ev-cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .ev-cover-ph { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: var(--rose-pale); }
+  .ev-cover { position: relative; background: var(--rose-pale); overflow: hidden; min-width: 0; }
+  .ev-cover img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+  .ev-cover-ph { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: var(--rose-pale); }
   .ev-cover-ph span { font-family: var(--fh); font-size: 40px; color: var(--rouge); opacity: 0.35; }
 
-  .ev-body { padding: 36px 38px 34px; display: flex; flex-direction: column; }
+  .ev-body { padding: 36px 38px 34px; display: flex; flex-direction: column; min-width: 0; overflow-wrap: break-word; }
   .ev-format { font-family: var(--fb); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--rouge); font-weight: 600; margin-bottom: 12px; }
   .ev-titre { font-family: var(--fb); font-weight: 700; font-size: clamp(22px, 2.3vw, 30px); line-height: 1.15; letter-spacing: -0.02em; color: var(--bordeaux); margin-bottom: 12px; text-wrap: pretty; }
   .ev-when { font-family: var(--fb); font-size: 14.5px; font-weight: 600; color: var(--encre); margin-bottom: 5px; }
   .ev-meta { font-family: var(--fs); font-style: italic; font-size: 14.5px; color: var(--bordeaux); opacity: 0.8; }
   .ev-accroche { font-family: var(--fb); font-size: 14.5px; line-height: 1.6; color: var(--encre); opacity: 0.84; margin-top: 16px; text-wrap: pretty; }
+  .ev-infos { font-family: var(--fb); font-size: 12.5px; font-weight: 600; letter-spacing: 0.01em; color: var(--rouge); margin-top: 14px; }
   .ev-foot { margin-top: auto; padding-top: 26px; display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
   .ev-prix { font-family: var(--fb); font-weight: 700; font-size: 19px; color: var(--bordeaux); letter-spacing: -0.01em; }
   .ev-action { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; }
@@ -85,6 +86,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .ev-card.is-teasing .ev-when { color: var(--bordeaux); opacity: 0.72; }
   .ev-card.is-teasing .ev-accroche,
   .ev-card.is-teasing .ev-meta { opacity: 0.62; }
+  .ev-card.is-teasing .ev-infos { opacity: 0.62; }
   .ev-card.is-teasing .ev-prix { opacity: 0.6; }
   .ev-card.is-complet .ev-cover img { filter: saturate(0.55); }
 
@@ -114,8 +116,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .ev-skel-cover, .ev-skel-line, .ev-skel-btn { animation: evPulse 1.5s ease-in-out infinite; }
   @keyframes evPulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.55; } }
 
-  @media (max-width: 860px) {
+  @media (max-width: 768px) {
     .ev-card, .ev-skel { grid-template-columns: 1fr; }
+    .ev-cover { aspect-ratio: 3 / 2; }
     .ev-body, .ev-skel-body { padding: 26px 24px 28px; }
     .ev-foot { align-items: flex-start; }
     .ev-action { align-items: flex-start; width: 100%; }
