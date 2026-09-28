@@ -38,13 +38,6 @@
     return (n % 1 === 0 ? n : n.toFixed(2).replace('.', ',')) + ' €';
   }
 
-  function formatJauge(j) {
-    if (j == null || j === '') return '';
-    var n = Number(j);
-    if (isNaN(n) || n <= 0) return '';
-    return (n === 1 ? '1 place maximum' : n + ' places maximum');
-  }
-
   function normStatut(s) {
     return (s || '').toString().normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim();
   }
@@ -60,6 +53,24 @@
       return '<div class="' + cls + '"><img src="' + esc(url) + '" alt="' + esc(alt) + '" loading="lazy"></div>';
     }
     return '<div class="' + cls + '"><div class="ev-cover-ph"><span>✦</span></div></div>';
+  }
+
+  // Pages dédiées par événement (clé = morceau du titre en slug).
+  // Si l'API renvoie un champ lienPage, il est prioritaire.
+  var PAGES = { 'femmes-et-argent': 'femmes-et-argent.html' };
+  function slug(s) {
+    return normStatut(s).replace(/&/g, ' et ').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+  }
+  function pageFor(ev) {
+    if (ev.lienPage) return ev.lienPage;
+    var s = slug(ev.titre);
+    for (var k in PAGES) { if (s.indexOf(k) !== -1) return PAGES[k]; }
+    return null;
+  }
+  function jaugeLine(n) {
+    var v = Number(n);
+    if (isNaN(v) || v <= 0) return '';
+    return '<div class="ev-jauge">' + v + ' places au total</div>';
   }
 
   // ── Carte "À venir" ────────────────────────────────────────────────────
@@ -79,10 +90,13 @@
       action = '<span class="ev-soon">Billetterie bientôt ouverte</span>';
     }
 
+    var page = pageFor(ev);
+    if (page) action = '<a class="ev-more" href="' + esc(page) + '">En savoir plus</a>' + action;
+
     var meta = [];
     if (ev.lieu) meta.push('<span class="ev-lieu">' + esc(ev.lieu) + '</span>');
     var prix = formatPrix(ev.prix);
-    var infos = [prix, formatJauge(ev.jauge)].filter(Boolean).join(' · ');
+    if (prix && prix !== 'Gratuit') prix += ' la place';
 
     return '' +
       '<article class="ev-card' + (isTeasing ? ' is-teasing' : '') + (isComplet ? ' is-complet' : '') + '">' +
@@ -93,9 +107,11 @@
           '<div class="ev-when">' + esc(formatDate(ev.date)) + '</div>' +
           (meta.length ? '<div class="ev-meta">' + meta.join('') + '</div>' : '') +
           (ev.accroche ? '<p class="ev-accroche">' + esc(ev.accroche) + '</p>' : '') +
-          (infos ? '<div class="ev-infos">' + esc(infos) + '</div>' : '') +
           '<div class="ev-foot">' +
-            (prix ? '<div class="ev-prix">' + esc(prix) + '</div>' : '') +
+            '<div class="ev-price-block">' +
+              (prix ? '<div class="ev-prix">' + esc(prix) + '</div>' : '') +
+              jaugeLine(ev.jauge) +
+            '</div>' +
             '<div class="ev-action">' + action + placesLine(ev.placesRestantes) + '</div>' +
           '</div>' +
         '</div>' +
