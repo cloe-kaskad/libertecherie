@@ -3082,3 +3082,20 @@ a.invitee:hover .invitee-ig .ig-arrow {
   .nav-pill::after { content: ''; }
   .invitee-ig { font-size: 11px !important; }
 }
+
+/* ===== Menu mobile (burger) ===== */
+.nav-burger{display:none}
+@media (max-width: 820px){
+  .nav-burger{display:flex;flex-direction:column;justify-content:center;gap:5px;width:44px;height:44px;padding:0 11px;border:none;border-radius:999px;background:var(--blanc);cursor:pointer;position:relative;z-index:1001;margin-left:10px}
+  .nav-burger span{display:block;height:2px;width:100%;background:var(--rouge);border-radius:2px;transition:transform .25s,opacity .2s}
+  nav.top.menu-open .nav-burger span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  nav.top.menu-open .nav-burger span:nth-child(2){opacity:0}
+  nav.top.menu-open .nav-burger span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+  nav.top .nav-links{margin-left:auto}
+  nav.top.menu-open{backdrop-filter:none!important;-webkit-backdrop-filter:none!important;transform:none!important;filter:none!important}
+  nav.top.menu-open .nav-links{position:fixed;inset:0;z-index:1000;background:var(--rouge);flex-direction:column;justify-content:center;align-items:center;gap:26px;margin:0;padding:90px 30px 40px}
+  nav.top.menu-open .nav-links li:not(:last-child){display:block}
+  nav.top.menu-open .nav-links a{font-size:15px;letter-spacing:.14em;color:var(--blanc)!important;opacity:1!important}
+  nav.top.menu-open .nav-links a.nav-pill{color:var(--rouge)!important;font-size:13px;margin-top:10px}
+  nav.top.menu-open .nav-logo{position:relative;z-index:1001}
+}
