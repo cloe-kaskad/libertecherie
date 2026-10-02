@@ -10,14 +10,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-K38STFP6');</script>
 <!-- End Google Tag Manager -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>La Newsletter — Liberté, Chérie !</title>
+<title>La Newsletter - Liberté, Chérie !</title>
 <meta name="description" content="Rejoignez la communauté Liberté, Chérie ! Deux fois par mois : lectures, écoutes, points de vue. Et accès à la Médiathèque.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://libertecherie.paris/newsletter">
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://libertecherie.paris/newsletter">
-<meta property="og:title" content="La Newsletter — Liberté, Chérie !">
+<meta property="og:title" content="La Newsletter - Liberté, Chérie !">
 <meta property="og:description" content="Rejoignez la communauté Liberté, Chérie ! Deux fois par mois : lectures, écoutes, points de vue. Et accès à la Médiathèque.">
 <meta property="og:image" content="https://libertecherie.paris/assets/img/og-libertecherie.jpg">
 <meta property="og:image:width" content="1200">
@@ -26,7 +26,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta property="og:site_name" content="Liberté, Chérie !">
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="La Newsletter — Liberté, Chérie !">
+<meta name="twitter:title" content="La Newsletter - Liberté, Chérie !">
 <meta name="twitter:description" content="Rejoignez la communauté Liberté, Chérie ! Deux fois par mois : lectures, écoutes, points de vue. Et accès à la Médiathèque.">
 <meta name="twitter:image" content="https://libertecherie.paris/assets/img/og-libertecherie.jpg">
 <link rel="icon" type="image/jpeg" href="assets/img/favicon.jpg">
@@ -188,9 +188,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <!-- Colonne gauche : inscription -->
   <section class="nlp-left">
-    <div class="nlp-eyebrow">— La newsletter —</div>
+    <div class="nlp-eyebrow">La newsletter</div>
     <h1 class="nlp-h1">Les questions qu'on<br>ne pose pas <span class="it">assez.</span></h1>
-    <p class="nlp-lede">Deux fois par mois, dans votre boîte mail. Des lectures, des écoutes, des points de vue — et les coulisses de Liberté,&nbsp;Chérie&nbsp;! Pas de spam, pas d'agenda caché.</p>
+    <p class="nlp-lede">Deux fois par mois, dans votre boîte mail. Des lectures, des écoutes, des points de vue - et les coulisses de Liberté,&nbsp;Chérie&nbsp;! Pas de spam, pas d'agenda caché.</p>
     <form class="nlp-form" id="nlForm" onsubmit="event.preventDefault(); handleNL();">
       <input type="email" name="email" id="nlEmail" placeholder="votre@email.fr" autocomplete="email" required>
       <button type="submit" id="nlSubmit">Je m'abonne</button>
@@ -203,7 +203,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <section class="nlp-right">
     <span class="nlp-key">✦ Bonus abonnées</span>
     <h2 class="nlp-r-title">En vous inscrivant, vous recevez le <span class="it">mot de passe magique</span> de la Médiathèque.</h2>
-    <p class="nlp-r-text">Notre sélection de <strong>podcasts, livres, films &amp; docus</strong>, choisis par les intervenantes et l'équipe. Une bibliothèque vivante, réservée à la communauté — et accessible dès votre inscription.</p>
+    <p class="nlp-r-text">Notre sélection de <strong>podcasts, livres, films &amp; docus</strong>, choisis par les intervenantes et l'équipe. Une bibliothèque vivante, réservée à la communauté - et accessible dès votre inscription.</p>
 
     <div class="nlp-teaser" id="teaser">
       <!-- rempli par JS : vraies couvertures Airtable en production, fallback statique sinon -->
@@ -217,7 +217,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 
 <script>
-  // Inscription newsletter — Brevo via Netlify Function (identique à l'accueil)
+  // Inscription newsletter - Brevo via Netlify Function (identique à l'accueil)
   async function handleNL() {
     const emailEl = document.getElementById('nlEmail');
     const btnEl = document.getElementById('nlSubmit');
@@ -240,7 +240,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       form.style.opacity = '0.4';
       form.style.pointerEvents = 'none';
-      msg.innerHTML = '✦ Merci&nbsp;! Votre mot de passe&nbsp;: <strong style="color:var(--bordeaux)">culturelibre</strong> — <a href="mediatheque.html" style="color:var(--rouge);text-decoration:underline;text-underline-offset:3px">accéder à la Médiathèque →</a>';
+      msg.innerHTML = '✦ Merci&nbsp;! Votre mot de passe&nbsp;: <strong style="color:var(--bordeaux)">culturelibre</strong> - <a href="mediatheque.html" style="color:var(--rouge);text-decoration:underline;text-underline-offset:3px">accéder à la Médiathèque →</a>';
     } catch (err) {
       btnEl.disabled = false;
       btnEl.textContent = "Je m'abonne";
@@ -323,5 +323,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     } catch(e) { /* garde le fallback statique */ }
   })();
 </script>
+<script src="/assets/track.js"></script>
 </body>
 </html>

@@ -1,7 +1,7 @@
 // assets/evenements.js
 // Récupère les événements via la fonction Netlify et rend les deux sections.
 // NOTE : les URLs d'images renvoyées par l'API sont temporaires (régénérées à
-// chaque appel). On ne les stocke JAMAIS (pas de localStorage, pas de cache) —
+// chaque appel). On ne les stocke JAMAIS (pas de localStorage, pas de cache) -
 // la page les relit à chaque chargement.
 
 (function () {

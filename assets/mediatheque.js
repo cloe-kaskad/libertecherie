@@ -13,7 +13,7 @@
     {
       id: 'sample1', titre: 'La Poudre', auteur: 'Lauren Bastide', type: 'Podcast',
       recommandePar: 'Cloé Dana', themes: ['Faire entendre sa voix', 'Modèles relationnels'],
-      description: "Lauren Bastide donne la parole à des femmes qui font — artistes, militantes, penseuses. Des conversations longues, sans format. La référence féministe francophone.",
+      description: "Lauren Bastide donne la parole à des femmes qui font - artistes, militantes, penseuses. Des conversations longues, sans format. La référence féministe francophone.",
       cover: null, lien: 'https://feeds.audiomeans.fr', langue: 'Français', coupDeCoeur: true, duree: '~1h', statut: 'Publié',
     },
     {
@@ -31,7 +31,7 @@
     {
       id: 'sample4', titre: 'Les Couilles sur la table', auteur: 'Victoire Tuaillon', type: 'Podcast',
       recommandePar: 'Julie Harriau', themes: ['Masculinités', 'Faire entendre sa voix'],
-      description: "Enquête sur les masculinités contemporaines. Pour comprendre comment on devient un homme — et ce que ça coûte à tout le monde.",
+      description: "Enquête sur les masculinités contemporaines. Pour comprendre comment on devient un homme - et ce que ça coûte à tout le monde.",
       cover: null, lien: '#', langue: 'Français', coupDeCoeur: false, duree: '~1h', statut: 'Publié',
     },
     {
@@ -43,7 +43,7 @@
     {
       id: 'sample6', titre: "L'argent des femmes", auteur: 'Léa Lejeune', type: 'Livre',
       recommandePar: 'Cloé Dana', themes: ['Indépendance financière'],
-      description: "Comprendre l'écart, le plafond de verre, l'autonomie. Ce que l'argent fait aux femmes — et l'inverse.",
+      description: "Comprendre l'écart, le plafond de verre, l'autonomie. Ce que l'argent fait aux femmes - et l'inverse.",
       cover: null, lien: '#', langue: 'Français', coupDeCoeur: true, duree: '240 p.', statut: 'Publié',
     },
   ];

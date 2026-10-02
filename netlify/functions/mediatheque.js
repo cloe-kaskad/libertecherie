@@ -4,20 +4,20 @@
 //
 // Va chercher les recommandations dans Airtable et renvoie un JSON propre
 // que la page mediatheque.html consomme. Le token Airtable reste SECRET,
-// côté serveur — il n'apparaît jamais dans le code de la page.
+// côté serveur - il n'apparaît jamais dans le code de la page.
 //
 // ────────────────────────────────────────────────────────────────────────
 // VARIABLES D'ENVIRONNEMENT À DÉFINIR DANS NETLIFY
 // (Site settings → Environment variables) :
 //
 //   AIRTABLE_TOKEN     Ton Personal Access Token Airtable (scope data.records:read)
-//   AIRTABLE_BASE_ID   L'ID de la base — commence par "app…"
+//   AIRTABLE_BASE_ID   L'ID de la base - commence par "app…"
 //   AIRTABLE_TABLE     Le NOM exact de la table (ex: "Recommandations")
 //                      ↳ optionnel, défaut "Recommandations"
 // ────────────────────────────────────────────────────────────────────────
 
 // Statuts qu'on NE montre PAS sur le site public.
-// Par défaut on affiche TOUT (y compris "À valider") — on ne masque que
+// Par défaut on affiche TOUT (y compris "À valider") - on ne masque que
 // ce qui est explicitement un brouillon ou archivé. Ajuste cette liste
 // si tu veux masquer d'autres statuts (ex: ajoute 'à valider').
 const STATUTS_CACHES = ['brouillon', 'archivé', 'archive', 'masqué', 'masque', 'rejeté', 'rejete'];
@@ -67,7 +67,7 @@ function normalize(record) {
     }
   }
   // Filet 2 : cherche n'importe quelle colonne dont la valeur est un tableau de strings
-  // (c'est le format Airtable des champs "Multiple select") — exclut les champs connus.
+  // (c'est le format Airtable des champs "Multiple select") - exclut les champs connus.
   const KNOWN_ARRAY_FIELDS = ['Image de couverture', 'Couverture', 'Cover', 'Image', 'Visuel', 'Recommandé par', 'Recommandée par'];
   if (themes === undefined || (Array.isArray(themes) && themes.length === 0)) {
     for (const k of Object.keys(f)) {
@@ -130,7 +130,7 @@ exports.handler = async (event) => {
     let records = [];
     let offset = undefined;
 
-    // Airtable pagine par 100 — on boucle jusqu'à tout récupérer.
+    // Airtable pagine par 100 - on boucle jusqu'à tout récupérer.
     do {
       const url = new URL(`https://api.airtable.com/v0/${baseId}/${encodeURIComponent(table)}`);
       url.searchParams.set('pageSize', '100');

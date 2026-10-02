@@ -1,5 +1,5 @@
 /* ============================================================
-   LIBERTÉ, CHÉRIE ! — Design system
+   LIBERTÉ, CHÉRIE ! - Design system
    ============================================================ */
 
 @font-face {
@@ -1828,7 +1828,7 @@ footer {
 
 
 /* ============================================================
-   REVISION 02 — applied user feedback
+   REVISION 02 - applied user feedback
    ============================================================ */
 
 /* ----- HERO ----- */
@@ -2157,7 +2157,7 @@ h2.title .it {
 /* ----- FOOTER: links cleaner sans-serif ----- */
 .footer-col a:hover { color: var(--rose); }
 
-/* ----- DINER quote (still italic — pull quote) ----- */
+/* ----- DINER quote (still italic - pull quote) ----- */
 .diner-quote { color: var(--blanc); }
 
 /* ----- Responsive tweaks for new patterns ----- */
@@ -2185,7 +2185,7 @@ h2.title .it {
 
 
 /* ============================================================
-   REVISION 03 — kill Boldonse (except logo), tighten everything
+   REVISION 03 - kill Boldonse (except logo), tighten everything
    ============================================================ */
 
 /* DM Sans replaces Boldonse everywhere by default.
@@ -2505,7 +2505,7 @@ image-slot.invitee-portrait {
 
 
 /* ============================================================
-   REVISION 04 — ticker rose, manifeste rose strikes,
+   REVISION 04 - ticker rose, manifeste rose strikes,
    invitee photo cropping, kaskad photo wider
    ============================================================ */
 
@@ -2592,7 +2592,7 @@ nav.top.scrolled .nav-logo { color: var(--rouge) !important; }
 
 
 /* ============================================================
-   REVISION 05 — Logo via image-slot
+   REVISION 05 - Logo via image-slot
    ============================================================ */
 .nav-logo {
   display: inline-flex;
@@ -2631,7 +2631,7 @@ footer image-slot::part(image) {
 
 
 /* ============================================================
-   REVISION 06 — kill logo slot background
+   REVISION 06 - kill logo slot background
    ============================================================ */
 #logo-nav, #logo-footer {
   background: transparent !important;
@@ -2646,7 +2646,7 @@ footer image-slot {
 
 
 /* ============================================================
-   REVISION 07 — invitees red bg, festival no filigrane, photos
+   REVISION 07 - invitees red bg, festival no filigrane, photos
    ============================================================ */
 
 /* ----- INVITEES section red background ----- */
@@ -2713,7 +2713,7 @@ image-slot.invitee-portrait::part(image),
 
 
 /* ============================================================
-   REVISION 08 — hero spacing, invitee crop, more red before ticker
+   REVISION 08 - hero spacing, invitee crop, more red before ticker
    ============================================================ */
 
 /* HERO: more breathing under nav, CTAs higher */
@@ -2735,7 +2735,7 @@ image-slot.invitee-portrait::part(image),
   z-index: 0;
 }
 
-/* INVITEE photos: bring up the face — top crop */
+/* INVITEE photos: bring up the face - top crop */
 image-slot.invitee-portrait {
   --image-slot-position: 50% 0%;
   aspect-ratio: 4 / 5.4 !important;
@@ -2749,7 +2749,7 @@ image-slot.invitee-portrait::part(image),
 
 
 /* ============================================================
-   REVISION 09 — invitee plain img with top crop
+   REVISION 09 - invitee plain img with top crop
    ============================================================ */
 .invitee-portrait {
   display: block;
@@ -2768,7 +2768,7 @@ image-slot.invitee-portrait::part(image),
 
 
 /* ============================================================
-   REVISION 10 — logo as plain img
+   REVISION 10 - logo as plain img
    ============================================================ */
 .nav-logo-img {
   height: 40px;
@@ -2789,7 +2789,7 @@ nav.top.scrolled .nav-logo-img {
 
 
 /* ============================================================
-   REVISION 09 — May 2026 updates
+   REVISION 09 - May 2026 updates
    - Manifeste typography balance
    - Italic accent in titles +10%
    - Invitée cards: Instagram links
@@ -2957,7 +2957,7 @@ a.invitee:hover .invitee-ig .ig-arrow {
 
 
 /* ============================================================
-   REVISION 10 — Mobile fixes (does NOT affect desktop)
+   REVISION 10 - Mobile fixes (does NOT affect desktop)
    Breakpoint bumped to 820px to cover wider phones
    ============================================================ */
 
@@ -3072,7 +3072,7 @@ a.invitee:hover .invitee-ig .ig-arrow {
   }
 }
 
-/* Extra-small screens — even tighter */
+/* Extra-small screens - even tighter */
 @media (max-width: 420px) {
   .nav-pill {
     padding: 7px 12px !important;
