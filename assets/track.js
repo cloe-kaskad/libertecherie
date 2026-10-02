@@ -50,12 +50,15 @@
   }, true);
 
   // 4. Réservation confirmée (page merci, une seule fois par session)
+  // Envoyé après le chargement complet, pour passer après le choix cookies (pixel Meta).
   if (/\/merci$/.test(page)) {
-    try {
-      if (!sessionStorage.getItem('lc_resa_tracked')) {
-        sessionStorage.setItem('lc_resa_tracked', '1');
-        push('reservation_confirmed', {});
-      }
-    } catch (e) { push('reservation_confirmed', {}); }
+    window.addEventListener('load', function () {
+      try {
+        if (!sessionStorage.getItem('lc_resa_tracked')) {
+          sessionStorage.setItem('lc_resa_tracked', '1');
+          push('reservation_confirmed', {});
+        }
+      } catch (e) { push('reservation_confirmed', {}); }
+    });
   }
 })();
