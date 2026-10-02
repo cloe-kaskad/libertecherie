@@ -56,7 +56,8 @@
       try {
         if (!sessionStorage.getItem('lc_resa_tracked')) {
           sessionStorage.setItem('lc_resa_tracked', '1');
-          push('reservation_confirmed', {});
+          var ev = new URLSearchParams(location.search).get('event') || '';
+          push('reservation_confirmed', { event_title: ev });
         }
       } catch (e) { push('reservation_confirmed', {}); }
     });
