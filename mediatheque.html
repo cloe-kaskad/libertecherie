@@ -459,6 +459,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     // déjà débloqué ?
     var already = false;
     try { already = localStorage.getItem(KEY) === '1'; } catch (e) {}
+    // inscrite reconnue par le site (lien email, formulaire) : accès direct
+    if (/(?:^|; )lc_member=1/.test(document.cookie)) already = true;
     if (already) { gate.classList.add('is-hidden'); }
     else { lockScroll(true); }
 
