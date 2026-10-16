@@ -109,6 +109,13 @@ export default async (request, context) => {
     return redirect(url.toString(), ok ? await accessCookies() : []);
   }
 
+  // Arrivée après le formulaire Meta (Lead Ads) : l'email vient d'être donné à Meta,
+  // on ouvre l'accès sans le redemander, puis on nettoie l'URL (les utm restent).
+  if (url.searchParams.get("acces") === "meta-toolbox") {
+    url.searchParams.delete("acces");
+    return redirect(url.toString(), await accessCookies());
+  }
+
   const res = await context.next();
   if (await isValidCookie(context.cookies.get(COOKIE))) return privateCopy(res);
 
