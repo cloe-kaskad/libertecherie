@@ -1,21 +1,22 @@
 // netlify/edge-functions/lettres-gate.js
 //
-// Protège la section /lettres (archive des newsletters + toolbox).
-// Seules les inscrites à la liste Brevo #3 y ont accès.
+// Section /lettres (archive des newsletters + toolbox).
+// Tout le monde voit l'archive et un aperçu de chaque lettre ; le contenu complet
+// est réservé aux inscrites à la liste Brevo #3.
 //
-// Trois façons d'entrer :
-//  1. Cookie d'accès valide (déposé lors d'une visite précédente ou d'une inscription)
-//  2. Lien depuis un email Brevo : /lettres/...?e={{ contact.EMAIL }}
-//     → on vérifie dans Brevo que l'adresse est inscrite, on dépose le cookie,
-//       puis on redirige vers la même URL SANS l'adresse (rien ne remonte dans GA).
-//  3. Sinon → page publique /lettres-acces (aperçu + formulaire d'inscription)
+//  - Lien depuis un email Brevo : /lettres/...?e={{ contact.EMAIL }}
+//    → on vérifie dans Brevo que l'adresse est inscrite, on dépose le cookie d'accès,
+//      puis on redirige vers la même URL SANS l'adresse (rien ne remonte dans GA).
+//  - Cookie d'accès valide → page complète.
+//  - Sinon → la page est servie en mode aperçu (<html class="lc-locked">) :
+//    assets/lettres-gate.js coupe le contenu et affiche le formulaire d'inscription.
 //
 // Variables d'environnement : BREVO_API_KEY (déjà présente), BREVO_LIST_ID (défaut 3),
 // LC_ACCESS_SECRET (facultative ; à défaut, la clé de signature est dérivée de BREVO_API_KEY).
 // La signature doit rester identique à celle de netlify/functions/subscribe.js.
 
 const COOKIE = "lc_access";
-const MEMBER_COOKIE = "lc_member"; // non-HttpOnly, sert seulement à l'affichage (Médiathèque)
+const MEMBER_COOKIE = "lc_member"; // non-HttpOnly, sert seulement à l'affichage
 const MAX_AGE = 60 * 60 * 24 * 365; // 12 mois
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -83,17 +84,18 @@ function redirect(location, cookies = []) {
   return new Response(null, { status: 302, headers });
 }
 
-function toAccessPage(url) {
-  const dest = new URL("/lettres-acces", url);
-  dest.searchParams.set("suite", url.pathname);
-  for (const [k, v] of url.searchParams) if (k.startsWith("utm_")) dest.searchParams.set(k, v);
-  return redirect(dest.toString());
+function privateCopy(res, body) {
+  const out = new Response(body === undefined ? res.body : body, res);
+  out.headers.set("Cache-Control", "private, no-store");
+  out.headers.set("X-Robots-Tag", "noindex");
+  out.headers.delete("Content-Length");
+  return out;
 }
 
 export default async (request, context) => {
   const url = new URL(request.url);
 
-  // 2. Arrivée depuis un email Brevo
+  // Arrivée depuis un email Brevo : on reconnaît l'inscrite, puis on nettoie l'URL
   if (url.searchParams.has("e")) {
     // Brevo n'encode pas toujours le « + » des adresses : il arrive sous forme d'espace.
     const email = (url.searchParams.get("e") || "").trim().replace(/ /g, "+").toLowerCase();
@@ -104,21 +106,21 @@ export default async (request, context) => {
     } catch (err) {
       console.error("Vérification Brevo impossible :", err);
     }
-    if (ok) return redirect(url.toString(), await accessCookies());
-    return toAccessPage(url);
+    return redirect(url.toString(), ok ? await accessCookies() : []);
   }
 
-  // 1. Cookie déjà présent
-  if (await isValidCookie(context.cookies.get(COOKIE))) {
-    const res = await context.next();
-    const out = new Response(res.body, res);
-    out.headers.set("Cache-Control", "private, no-store");
-    out.headers.set("X-Robots-Tag", "noindex");
-    return out;
-  }
+  const res = await context.next();
+  if (await isValidCookie(context.cookies.get(COOKIE))) return privateCopy(res);
 
-  // 3. Pas d'accès
-  return toAccessPage(url);
+  // Pas d'accès : les pages HTML passent en mode aperçu
+  const type = res.headers.get("content-type") || "";
+  if (!type.includes("text/html")) return privateCopy(res);
+  const html = await res.text();
+  return privateCopy(res, html.replace(/<html([^>]*)>/i, '<html$1 class="lc-locked">'));
 };
 
-export const config = { path: ["/lettres", "/lettres/*"] };
+// L'archive (/lettres) et les images restent publiques et en cache.
+export const config = {
+  path: ["/lettres/*"],
+  excludedPath: ["/lettres/img/*"],
+};

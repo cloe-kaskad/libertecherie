@@ -125,6 +125,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   @media (max-width: 860px) { .lt-feature { grid-template-columns: 1fr; } .lt-feature img { min-height: 220px; max-height: 280px; } .lt-cards { grid-template-columns: 1fr 1fr; } }
   @media (max-width: 560px) { .lt-cards { grid-template-columns: 1fr; } .lt-feature-body { padding: 30px 24px; } }
 
+
+  .lc-badge { display: none; align-items: center; gap: 6px; font-family: var(--fb); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; font-weight: 600; color: var(--bordeaux); background: var(--rose-pale); border-radius: 999px; padding: 5px 11px; margin-bottom: 12px; align-self: flex-start; }
+  .lt-feature .lc-badge { color: var(--bordeaux); background: var(--rose); }
+  .lc-locked .lc-badge { display: inline-flex; }
+  .lc-note { display: none; font-family: var(--fb); font-size: 15px; margin-top: 18px; color: var(--bordeaux); }
+  .lc-locked .lc-note { display: block; }
 </style>
 </head>
 <body class="lt-page ">
@@ -155,6 +161,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="lt-eyebrow">Réservé à la communauté</div>
     <h1 class="lt-h1">Les lettres<span class="it">tout ce qu'on vous a écrit, au même endroit.</span></h1>
     <p class="lt-lede">Deux fois par mois, une question. Ici, toutes les éditions de La Question, Chérie ! et nos toolbox, à relire quand vous voulez.</p>
+    <p class="lc-note">Les aperçus sont en accès libre. Pour tout lire, il suffit de s'inscrire à la newsletter avec son email.</p>
   </div>
 </header>
 
@@ -164,6 +171,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <a class="lt-feature" href="/lettres/toolbox-argent">
       <img src="/assets/img/fa-cash.jpg" alt="">
       <div class="lt-feature-body">
+        <span class="lc-badge">🔒 Réservé aux inscrites</span>
         <div class="lt-kicker">Toolbox · Octobre 2026</div>
         <h3>Femmes &amp; Argent : <span class="it">nos meilleures ressources #thune</span></h3>
         <p>Des expertes à suivre, six livres, des podcasts, un film en accès libre, trois cours à -20 % et Clodie, notre outil impôts.</p>
@@ -180,6 +188,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <a class="lt-lcard" href="/lettres/la-femme-quon-sera">
         <img src="/lettres/img/7668071ddcb0387d.jpg" alt="" loading="lazy">
         <div class="lt-lcard-body">
+          <span class="lc-badge">🔒 Réservé aux inscrites</span>
           <div class="num">N° 05 · 14 octobre 2026</div>
           <h3>Qu'est-ce qu'on doit à la femme qu'on sera ?</h3>
           <p>Les décisions d'aujourd'hui se paient plus tard, par une femme qu'on ne connaît pas encore.</p>
@@ -189,6 +198,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <a class="lt-lcard" href="/lettres/gagner-sa-vie">
         <img src="/lettres/img/b7961070cfbb5d14.jpg" alt="" loading="lazy">
         <div class="lt-lcard-body">
+          <span class="lc-badge">🔒 Réservé aux inscrites</span>
           <div class="num">N° 04 · 30 septembre 2026</div>
           <h3>Qu'est-ce qu'on gagne, à gagner sa vie ?</h3>
           <p>Un compte à soi, le couple, la maternité : parler d'argent, c'est parler de liberté.</p>
@@ -198,6 +208,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <a class="lt-lcard" href="/lettres/ce-qui-ne-se-compte-pas">
         <img src="/lettres/img/2159d97d0612b805.jpg" alt="" loading="lazy">
         <div class="lt-lcard-body">
+          <span class="lc-badge">🔒 Réservé aux inscrites</span>
           <div class="num">N° 03 · 9 septembre 2026</div>
           <h3>Ce qui ne se compte pas a moins de valeur ?</h3>
           <p>Ce qu'un travail rapporte, on sait le dire. Ce qu'il nous apporte, beaucoup moins.</p>
@@ -207,6 +218,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <a class="lt-lcard" href="/lettres/le-temps">
         <img src="/lettres/img/72aab49a368b6de0.webp" alt="" loading="lazy">
         <div class="lt-lcard-body">
+          <span class="lc-badge">🔒 Réservé aux inscrites</span>
           <div class="num">N° 02 · 26 août 2026</div>
           <h3>Et toi, est-ce que t'as le temps ?</h3>
           <p>Charge mentale, injonction à l'optimisation, vacances à cocher : à qui appartient notre temps ?</p>
@@ -216,6 +228,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <a class="lt-lcard" href="/lettres/la-question">
         <img src="/lettres/img/b0c50827823ba83b.jpg" alt="" loading="lazy">
         <div class="lt-lcard-body">
+          <span class="lc-badge">🔒 Réservé aux inscrites</span>
           <div class="num">N° 01 · 12 août 2026</div>
           <h3>La Question, Chérie !</h3>
           <p>On passe quinze ans à apprendre à répondre. Mais qui nous apprend à questionner ?</p>
