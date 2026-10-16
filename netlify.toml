@@ -1,4 +1,4 @@
-# netlify.toml — configuration Netlify (déploiement par glisser-déposer)
+# netlify.toml : configuration Netlify (site relié à GitHub)
 
 # Emplacement des fonctions serverless (newsletter + médiathèque Airtable)
 [functions]
