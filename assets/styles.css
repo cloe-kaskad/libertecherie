@@ -3261,3 +3261,8 @@ body .ev-section-title .it, body .mt-la, body .ev-h1 .it, body .lt-h1 .it, body 
 /* thématiques : intro alignée sur le style des cases, filet fin */
 .themes-intro { font-family: var(--fs); font-style: italic; font-size: 15px; line-height: 1.55; color: var(--bordeaux); margin: 28px 0 0; padding: 18px 0; border-top: 1px solid rgba(81,0,4,.12); max-width: 640px; }
 .thematiques .themes-grid { margin-top: 0; }
+
+/* édito : note alignée comme la section Invitées (filet rouge à gauche, texte à droite) */
+.edito-hd { grid-template-columns: 1fr 1fr; }
+.edito-note { max-width: 460px; justify-self: end; }
+.edito-hd .edito-note { color: var(--bordeaux) !important; border-left-color: var(--rouge) !important; opacity: .85; }
