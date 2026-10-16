@@ -4,33 +4,33 @@
 
 @font-face {
   font-family: 'Boldonse';
-  src: url('fonts/Boldonse.ttf') format('truetype');
+  src: url('fonts/Boldonse.woff2') format('woff2'), url('fonts/Boldonse.ttf') format('truetype');
   font-display: swap;
 }
 @font-face {
   font-family: 'LibreBaskerville';
-  src: url('fonts/LibreBaskerville-Regular.ttf') format('truetype');
+  src: url('fonts/LibreBaskerville-Regular.woff2') format('woff2'), url('fonts/LibreBaskerville-Regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'LibreBaskerville';
-  src: url('fonts/LibreBaskerville-Italic.ttf') format('truetype');
+  src: url('fonts/LibreBaskerville-Italic.woff2') format('woff2'), url('fonts/LibreBaskerville-Italic.ttf') format('truetype');
   font-weight: 400;
   font-style: italic;
   font-display: swap;
 }
 @font-face {
   font-family: 'DMSans';
-  src: url('fonts/DMSans.ttf') format('truetype-variations');
+  src: url('fonts/DMSans.woff2') format('woff2-variations'), url('fonts/DMSans.ttf') format('truetype-variations');
   font-weight: 100 1000;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'DMSans';
-  src: url('fonts/DMSans-Italic.ttf') format('truetype-variations');
+  src: url('fonts/DMSans-Italic.woff2') format('woff2-variations'), url('fonts/DMSans-Italic.ttf') format('truetype-variations');
   font-weight: 100 1000;
   font-style: italic;
   font-display: swap;

@@ -1,7 +1,9 @@
 User-agent: *
 Allow: /
-Disallow: /merci
+Allow: /lettres$
 Disallow: /lettres/
+Disallow: /merci
+Disallow: /reglement-jeu-concours
 
 User-agent: GPTBot
 Allow: /
@@ -9,7 +11,13 @@ Allow: /
 User-agent: OAI-SearchBot
 Allow: /
 
+User-agent: ChatGPT-User
+Allow: /
+
 User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
 Allow: /
 
 User-agent: PerplexityBot

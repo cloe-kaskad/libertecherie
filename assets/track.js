@@ -8,10 +8,58 @@
     dl.push(o);
   }
 
+
+  // 0. UTM : on garde le premier point de contact (90 jours) pour l'attribution des inscriptions
+  try {
+    var qs = new URLSearchParams(location.search), utm = {};
+    ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content'].forEach(function (k) { if (qs.get(k)) utm[k] = qs.get(k).slice(0, 60); });
+    if (Object.keys(utm).length) {
+      var prev = JSON.parse(localStorage.getItem('lc_utm') || 'null');
+      if (!prev || (Date.now() - (prev.t || 0)) > 90 * 864e5) { utm.t = Date.now(); utm.landing = page; localStorage.setItem('lc_utm', JSON.stringify(utm)); }
+    }
+  } catch (e) {}
+  window.lcSource = function () {
+    try {
+      var u = JSON.parse(localStorage.getItem('lc_utm') || 'null');
+      if (!u) return page;
+      return [u.utm_source, u.utm_medium, u.utm_campaign, u.utm_content].filter(Boolean).join('/') + ' @ ' + (u.landing || page);
+    } catch (e) { return page; }
+  };
+
+  // 0 bis. Clics : CTA principaux, cartes, liens sortants
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a');
+    if (!a) return;
+    var href = a.getAttribute('href') || '';
+    var sec = a.closest('section, header, footer, nav');
+    var section = sec ? (sec.id || sec.className.split(' ')[0] || sec.tagName.toLowerCase()) : '';
+    if (a.dataset.cta) {
+      push('cta_click', { cta_id: a.dataset.cta, cta_text: (a.textContent || '').trim().slice(0, 60), section: section });
+    } else if (a.classList.contains('fcard-link') || a.closest('.fcard')) {
+      var card = a.closest('.fcard'), cat = card && card.querySelector('.fcard-cat');
+      push('format_click', { format: cat ? cat.textContent.trim() : '', section: section });
+    } else if (a.classList.contains('ec-link')) {
+      var ec = a.closest('.edito-card'), name = ec && ec.querySelector('.ec-name');
+      push('edito_click', { item: name ? name.textContent.trim().replace(/\s+/g, ' ') : '', section: section });
+    } else if (a.classList.contains('invitee')) {
+      push('invitee_click', { name: (a.getAttribute('aria-label') || '').replace(/^Instagram de /, ''), section: section });
+    } else if (/^https?:/.test(href) && a.host !== location.host && !/^\/lettres\//.test(page)) {
+      var dom = a.host.replace(/^www\./, '');
+      push('outbound_click', { link_domain: dom, link_url: a.href.split('?')[0], link_text: (a.textContent || a.getAttribute('aria-label') || '').trim().slice(0, 60), section: section });
+    } else if (href === '#newsletter' || href === '/#newsletter') {
+      push('cta_click', { cta_id: 'newsletter_anchor', cta_text: (a.textContent || '').trim().slice(0, 60), section: section });
+    }
+  }, true);
+
   // 1. Inscription newsletter réussie (accueil, page newsletter, médiathèque)
   if (window.fetch) {
     var _fetch = window.fetch;
     window.fetch = function (url, opts) {
+      try {
+        if (String(url).indexOf('/api/subscribe') !== -1 && opts && typeof opts.body === 'string') {
+          var b = JSON.parse(opts.body); if (b && b.email && !b.source) { b.source = window.lcSource(); opts.body = JSON.stringify(b); }
+        }
+      } catch (e) {}
       var p = _fetch.apply(this, arguments);
       try {
         if (String(url).indexOf('/api/subscribe') !== -1) {

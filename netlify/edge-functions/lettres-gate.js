@@ -84,10 +84,10 @@ function redirect(location, cookies = []) {
   return new Response(null, { status: 302, headers });
 }
 
-function privateCopy(res, body) {
+function privateCopy(res, body, indexable = false) {
   const out = new Response(body === undefined ? res.body : body, res);
   out.headers.set("Cache-Control", "private, no-store");
-  out.headers.set("X-Robots-Tag", "noindex");
+  if (!indexable) out.headers.set("X-Robots-Tag", "noindex");
   out.headers.delete("Content-Length");
   return out;
 }
@@ -116,14 +116,16 @@ export default async (request, context) => {
     return redirect(url.toString(), await accessCookies());
   }
 
+  // L'archive (/lettres) est une page publique : indexable par Google et les IA.
+  const isArchive = /^\/lettres\/?$/.test(url.pathname);
   const res = await context.next();
-  if (await isValidCookie(context.cookies.get(COOKIE))) return privateCopy(res);
+  if (await isValidCookie(context.cookies.get(COOKIE))) return privateCopy(res, undefined, isArchive);
 
   // Pas d'accès : les pages HTML passent en mode aperçu
   const type = res.headers.get("content-type") || "";
   if (!type.includes("text/html")) return privateCopy(res);
   const html = await res.text();
-  return privateCopy(res, html.replace(/<html([^>]*)>/i, '<html$1 class="lc-locked">'));
+  return privateCopy(res, html.replace(/<html([^>]*)>/i, '<html$1 class="lc-locked">'), isArchive);
 };
 
 // L'archive (/lettres) et les images restent publiques et en cache.
