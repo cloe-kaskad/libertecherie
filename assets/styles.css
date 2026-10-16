@@ -3248,12 +3248,16 @@ body .ev-section-title .it, body .mt-la, body .ev-h1 .it, body .lt-h1 .it, body 
 .ec-head.has-img::before { content: ""; position: absolute; inset: 0; z-index: 1; }
 .ec-head.nl.has-img::before { background: linear-gradient(to top, rgba(230,54,29,.92) 18%, rgba(230,54,29,.35) 60%, rgba(230,54,29,.15)); }
 .ec-head.md.has-img::before { background: linear-gradient(to top, rgba(247,190,202,.95) 22%, rgba(247,190,202,.4) 60%, rgba(247,190,202,.1)); }
-.ec-head.rc.has-img::before { background: linear-gradient(to top, rgba(81,0,4,.94) 20%, rgba(81,0,4,.45) 58%, rgba(81,0,4,.2)); }
+.ec-head.rc.has-img::before { background: linear-gradient(to top, rgba(81,0,4,.94) 18%, rgba(81,0,4,.4) 55%, rgba(81,0,4,.12)); }
 .ec-head.has-img .ec-cat, .ec-head.has-img .ec-name { position: relative; z-index: 2; }
 .ec-head.has-img .ec-cat { opacity: .9; }
 .ec-stamp {
-  position: absolute; z-index: 2; top: 22px; right: -34px; transform: rotate(12deg);
+  position: absolute; z-index: 2; bottom: 26px; right: -30px; transform: rotate(-8deg);
   font-family: var(--fs); font-style: italic; font-size: 30px; line-height: 1;
   color: var(--bordeaux); background: var(--rose); padding: 10px 48px; letter-spacing: .01em;
   box-shadow: 0 10px 24px rgba(0,0,0,.25);
 }
+
+/* thématiques : intro alignée sur le style des cases, filet fin */
+.themes-intro { font-family: var(--fs); font-style: italic; font-size: 15px; line-height: 1.55; color: var(--bordeaux); margin: 28px 0 0; padding: 18px 0; border-top: 1px solid rgba(81,0,4,.12); max-width: 640px; }
+.thematiques .themes-grid { margin-top: 0; }
