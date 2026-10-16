@@ -31,6 +31,15 @@
     };
   } catch (e) {}
 
+  // 2 bis. Clics sortants dans les lettres / la toolbox (/lettres/...)
+  if (/^\/lettres\//.test(page)) {
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a');
+      if (!a || !/^(https?:|mailto:)/.test(a.getAttribute('href') || '')) return;
+      push('lettre_click', { link_url: a.href.split('?')[0], link_text: (a.textContent || '').trim().slice(0, 80) });
+    }, true);
+  }
+
   // 3. Clics sur les événements
   function titleFor(el) {
     var card = el.closest('article, section, .ev-card');

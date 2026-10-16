@@ -340,6 +340,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <li><a href="index.html#invitees">Les invitées</a></li>
     <li><a href="index.html#edito">L'Édito</a></li>
     <li><a href="mediatheque.html" aria-current="page">Médiathèque</a></li>
+    <li><a href="/lettres">Les lettres</a></li>
     <li><a href="index.html#newsletter" class="nav-pill">Newsletter →</a></li>
   </ul>
 </nav>
@@ -417,6 +418,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <h4>Le studio</h4>
       <a href="index.html#edito">L'Édito</a>
       <a href="mediatheque.html">La Médiathèque</a>
+      <a href="/lettres">Les lettres</a>
       <a href="index.html#newsletter">La Newsletter</a>
       <a href="index.html#partenaires">Devenir partenaire</a>
     </div>
@@ -459,6 +461,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     // déjà débloqué ?
     var already = false;
     try { already = localStorage.getItem(KEY) === '1'; } catch (e) {}
+    // inscrite reconnue par le site (lien email, formulaire) : accès direct
+    if (/(?:^|; )lc_member=1/.test(document.cookie)) already = true;
     if (already) { gate.classList.add('is-hidden'); }
     else { lockScroll(true); }
 

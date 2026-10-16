@@ -32,3 +32,9 @@
   from = "/api/evenements"
   to = "/.netlify/functions/evenements"
   status = 200
+
+# Ancienne page d'accès : la toolbox s'ouvre désormais directement en aperçu
+[[redirects]]
+  from = "/lettres-acces"
+  to = "/lettres/toolbox-argent"
+  status = 301

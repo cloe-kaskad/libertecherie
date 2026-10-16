@@ -10,7 +10,22 @@
 //   BREVO_API_KEY    Ta clé API v3 Brevo (xsmtpsib-…)
 //   BREVO_LIST_ID    ID numérique de la liste (3)
 
+const crypto = require('crypto');
+
 const BREVO_LIST_ID = parseInt(process.env.BREVO_LIST_ID || '3', 10);
+
+// Cookie d'accès aux espaces réservés (/lettres, Médiathèque).
+// Même signature que netlify/edge-functions/lettres-gate.js : ne pas modifier l'un sans l'autre.
+const ACCESS_MAX_AGE = 60 * 60 * 24 * 365; // 12 mois
+function accessCookies() {
+  const secret = process.env.LC_ACCESS_SECRET || process.env.BREVO_API_KEY || '';
+  const exp = String(Math.floor(Date.now() / 1000) + ACCESS_MAX_AGE);
+  const sig = crypto.createHmac('sha256', 'lc-access:' + secret).update('v1.' + exp).digest('base64url');
+  return [
+    `lc_access=v1.${exp}.${sig}; Path=/; Max-Age=${ACCESS_MAX_AGE}; HttpOnly; Secure; SameSite=Lax`,
+    `lc_member=1; Path=/; Max-Age=${ACCESS_MAX_AGE}; Secure; SameSite=Lax`,
+  ];
+}
 
 exports.handler = async (event) => {
   // CORS — autorise le formulaire à appeler depuis le domaine du site
@@ -84,6 +99,7 @@ exports.handler = async (event) => {
     return {
       statusCode: 200,
       headers: cors,
+      multiValueHeaders: { 'Set-Cookie': accessCookies() },
       body: JSON.stringify({ ok: true }),
     };
   } catch (err) {

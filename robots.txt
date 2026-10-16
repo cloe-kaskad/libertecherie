@@ -1,6 +1,7 @@
 User-agent: *
 Allow: /
 Disallow: /merci
+Disallow: /lettres/
 
 User-agent: GPTBot
 Allow: /
