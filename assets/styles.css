@@ -3099,3 +3099,122 @@ a.invitee:hover .invitee-ig .ig-arrow {
   nav.top.menu-open .nav-links a.nav-pill{color:var(--rouge)!important;font-size:13px;margin-top:10px}
   nav.top.menu-open .nav-logo{position:relative;z-index:1001}
 }
+
+
+/* ============================================================
+   REVISION 03 - refonte octobre 2026 (home)
+   ============================================================ */
+
+/* ----- Titres : italique rose remplacé par DM Sans fin rouge ----- */
+body h2.title .it, body h2.title span.it,
+body .hero h1 .it,
+body .format-name .it, body .fcard-title .it,
+body .ec-name .it, body .theme-name .it,
+body .nl-capture h2 .it, body .manifeste-quote .answer .it,
+body .ticker-item.it, body .invitee-nom .it {
+  font-family: var(--fb) !important;
+  font-style: normal !important;
+  font-weight: 200 !important;
+  color: var(--rouge) !important;
+  opacity: 1 !important;
+  letter-spacing: 0 !important;
+}
+body h2.title .it { display: block; font-size: 0.5em !important; margin-top: 10px; line-height: 1.15; }
+body .nl-capture h2 .it, body .partenaires-simple h2.title .it, body .ticker-item.it { color: var(--rose) !important; }
+body .fcard-bordeaux .fcard-title .it { color: var(--rose) !important; }
+body .ticker-item.it { font-weight: 300 !important; }
+/* Médiathèque, Événements : même traitement des sous-titres italiques */
+body .ev-section-title .it, body .mt-la, body .ev-h1 .it, body .lt-h1 .it, body .lt-h2 .it, body .fe-h2 .it, body .nlp-h1 .it, body .nlp-r-title .it {
+  font-family: var(--fb) !important; font-style: normal !important; font-weight: 200 !important; color: var(--rouge) !important;
+}
+.intro, .member-bio, .hero-sub, .vivier-note { font-style: normal; }
+
+/* ----- HERO v3 : texte + photo ----- */
+.hero.hero-v3 { min-height: auto; padding-bottom: 32px; }
+.hero-v3-grid {
+  display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 56px; align-items: center;
+  position: relative; z-index: 2; margin: 48px 0 40px;
+}
+.hero.hero-v3 h1 { font-size: clamp(42px, 6.2vw, 96px); line-height: 1.02; max-width: 12ch; }
+.hero.hero-v3 .hero-sub { max-width: 520px; font-family: var(--fb); font-size: clamp(16px, 1.25vw, 19px); line-height: 1.6; color: rgba(255,255,255,.86); }
+.hero.hero-v3 .hero-cta { margin-top: 34px; }
+.hero-v3-photo { margin: 0; position: relative; }
+.hero-v3-photo img { width: 100%; aspect-ratio: 16 / 11; object-fit: cover; border-radius: 10px; display: block; box-shadow: 0 30px 80px rgba(81,0,4,.35); }
+.hero-v3-photo figcaption { position: absolute; left: 16px; bottom: 14px; font-family: var(--fb); font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.9); background: rgba(81,0,4,.55); padding: 6px 10px; border-radius: 4px; backdrop-filter: blur(4px); }
+.hero.hero-v3 .hero-bottom { justify-content: flex-end; }
+
+/* ----- Carrousel des formats ----- */
+.formats-v3 .talks-hd { margin-bottom: 40px; }
+.carousel { position: relative; }
+.carousel-track {
+  display: flex; gap: 24px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth;
+  padding: 4px 4px 24px; scrollbar-width: none; -webkit-overflow-scrolling: touch;
+}
+.carousel-track::-webkit-scrollbar { display: none; }
+.fcard {
+  flex: 0 0 calc((100% - 48px) / 3); min-width: 300px; scroll-snap-align: start;
+  background: var(--blanc); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column;
+  box-shadow: 0 2px 0 rgba(81,0,4,.06); transition: transform .25s, box-shadow .25s;
+}
+.fcard:hover { transform: translateY(-4px); box-shadow: 0 24px 60px rgba(81,0,4,.10); }
+.fcard-photo { position: relative; aspect-ratio: 4 / 3.4; overflow: hidden; }
+.fcard-photo img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .6s; }
+.fcard:hover .fcard-photo img { transform: scale(1.04); }
+.fcard-tag { position: absolute; left: 14px; top: 14px; font-family: var(--fb); font-size: 10.5px; letter-spacing: .18em; text-transform: uppercase; font-weight: 600; background: var(--blanc); color: var(--bordeaux); padding: 6px 10px; border-radius: 999px; }
+.fcard-body { padding: 26px 26px 28px; display: flex; flex-direction: column; flex: 1; }
+.fcard-cat { font-family: var(--fb); font-size: 11px; letter-spacing: .22em; text-transform: uppercase; color: var(--rouge); font-weight: 600; margin-bottom: 10px; }
+.fcard-title { font-family: var(--fh); font-size: 30px; line-height: 1; color: var(--bordeaux); font-weight: 400; margin-bottom: 14px; }
+.fcard-title .it { display: block; font-size: 17px; margin-top: 6px; }
+.fcard-body > p { font-family: var(--fb); font-size: 15.5px; line-height: 1.6; color: var(--encre); margin-bottom: 18px; }
+.fcard-specs { display: grid; grid-template-columns: auto 1fr; gap: 6px 14px; font-family: var(--fb); font-size: 13px; margin: 0 0 20px; padding-top: 14px; border-top: 1px solid var(--hairline); }
+.fcard-specs dt { color: var(--rouge); letter-spacing: .14em; text-transform: uppercase; font-size: 10.5px; font-weight: 600; padding-top: 2px; }
+.fcard-specs dd { margin: 0; color: var(--encre); }
+.fcard-link { margin-top: auto; align-self: flex-start; font-family: var(--fb); font-weight: 600; font-size: 14px; color: var(--rouge); text-decoration: none; border-bottom: 1.5px solid var(--rouge); padding-bottom: 2px; }
+.fcard-link::after { content: ' →'; }
+.fcard-bordeaux { background: var(--bordeaux); }
+.fcard-bordeaux .fcard-title, .fcard-bordeaux .fcard-body > p, .fcard-bordeaux .fcard-specs dd { color: var(--blanc); }
+.fcard-bordeaux .fcard-cat, .fcard-bordeaux .fcard-specs dt, .fcard-bordeaux .fcard-title .it { color: var(--rose); }
+.fcard-bordeaux .fcard-specs { border-top-color: rgba(255,255,255,.18); }
+.fcard-bordeaux .fcard-link { color: var(--rose); border-bottom-color: var(--rose); }
+.fcard-rose { background: var(--rose); }
+.fcard-rose .fcard-tag { background: var(--bordeaux); color: var(--blanc); }
+.carousel-nav { display: flex; align-items: center; justify-content: center; gap: 18px; margin-top: 6px; }
+.carousel-btn { width: 44px; height: 44px; border-radius: 50%; border: 1.5px solid var(--bordeaux); background: transparent; color: var(--bordeaux); font-size: 18px; cursor: pointer; transition: background .2s, color .2s; }
+.carousel-btn:hover { background: var(--bordeaux); color: var(--blanc); }
+.carousel-dots { display: flex; gap: 8px; }
+.carousel-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(81,0,4,.2); transition: background .2s, transform .2s; }
+.carousel-dot.on { background: var(--rouge); transform: scale(1.3); }
+@media (min-width: 1101px) { .carousel-nav { display: none; } }
+
+/* ----- Équipe : patchwork ----- */
+.team-v3 .team-hd { max-width: 760px; margin-bottom: 48px; }
+.team-patchwork {
+  display: grid; grid-template-columns: repeat(5, 1fr); grid-auto-rows: 180px; gap: 10px;
+}
+.team-patchwork .tp { margin: 0; overflow: hidden; border-radius: 8px; background: var(--gris); }
+.team-patchwork .tp img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .6s; }
+.team-patchwork .tp:hover img { transform: scale(1.04); }
+.team-patchwork .tp-big { grid-column: span 2; grid-row: span 2; }
+.team-members-v3 { display: grid; grid-template-columns: 1fr 1fr; gap: 0 56px; margin-top: 48px; }
+.team-members-v3 .member { border-bottom: 1px solid var(--hairline); }
+.team-members-v3 .member-bio { max-width: none; font-size: 15.5px; }
+
+/* ----- Édito : 3 cartes ----- */
+.ec-head.rc { background: var(--bordeaux); }
+
+/* ----- Responsive ----- */
+@media (max-width: 1100px) {
+  .fcard { flex-basis: calc((100% - 24px) / 2); }
+  .team-patchwork { grid-template-columns: repeat(4, 1fr); grid-auto-rows: 160px; }
+}
+@media (max-width: 820px) {
+  .hero-v3-grid { grid-template-columns: 1fr; gap: 28px; margin: 28px 0 24px; }
+  .hero.hero-v3 h1 { font-size: 40px; max-width: none; }
+  .hero-v3-photo img { aspect-ratio: 4 / 5; }
+  .hero.hero-v3 .hero-bottom { justify-content: flex-start; }
+  .fcard { flex-basis: 86%; min-width: 0; }
+  .team-patchwork { grid-template-columns: repeat(3, 1fr); grid-auto-rows: 110px; gap: 6px; }
+  .team-patchwork .tp-big { grid-column: span 2; grid-row: span 2; }
+  .team-members-v3 { grid-template-columns: 1fr; gap: 0; }
+  h2.title .it { font-size: 0.55em; }
+}
