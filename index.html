@@ -80,7 +80,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <figure class="hero-v3-photo hero-slides" aria-label="Photos des soirées Liberté, Chérie !">
       <img src="assets/img/2026/hero-2.jpg" alt="Les fondatrices de Liberté, Chérie !" fetchpriority="high" class="is-on">
       <img src="assets/img/2026/hero-3.jpg" alt="Une table dressée pour un dîner" loading="lazy">
-      <img src="assets/img/2026/hero-1.jpg" alt="Sur scène, lors d'une soirée Liberté, Chérie !" loading="lazy">
       <img src="assets/img/2026/hero-4.jpg" alt="Des rires pendant le festival" loading="lazy">
       <img src="assets/img/2026/hero-5.jpg" alt="Un cercle de parole au festival" loading="lazy">
       <img src="assets/img/2026/hero-6.jpg" alt="Une conversation devant l'exposition" loading="lazy">
@@ -737,7 +736,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       imgs[i].classList.remove('is-on'); i=(i+1)%imgs.length; imgs[i].classList.add('is-on');
     },ms);
   }
-  run('.hero-slides',4500);
+  run('.hero-slides',3000);
 
   /* Créatrices : les photos arrivent une à une et s'empilent, puis la pile recommence */
   var pile=document.querySelector('.team-pile');
