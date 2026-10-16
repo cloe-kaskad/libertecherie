@@ -3266,3 +3266,11 @@ body .ev-section-title .it, body .mt-la, body .ev-h1 .it, body .lt-h1 .it, body 
 .edito-hd { grid-template-columns: 1fr 1fr; }
 .edito-note { max-width: 460px; justify-self: end; }
 .edito-hd .edito-note { color: var(--bordeaux) !important; border-left-color: var(--rouge) !important; opacity: .85; }
+
+/* ---------- Mobile : correctifs octobre 2026 ---------- */
+.team-pile { width: 100%; }
+@media (max-width: 1100px) {
+  .kaskad-photos { grid-template-rows: auto !important; }
+  .festival-grid .festival-photos { order: 2; }
+  .festival-grid .festival-content { order: 1; }
+}
