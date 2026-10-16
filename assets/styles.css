@@ -3218,3 +3218,15 @@ body .ev-section-title .it, body .mt-la, body .ev-h1 .it, body .lt-h1 .it, body 
   .team-members-v3 { grid-template-columns: 1fr; gap: 0; }
   h2.title .it { font-size: 0.55em; }
 }
+
+/* ---------- REVISION 03b : diaporamas hero + créatrices ---------- */
+.hero-slides, .team-slides { position: relative; }
+.hero-slides { aspect-ratio: 16 / 11; border-radius: 10px; overflow: hidden; box-shadow: 0 30px 80px rgba(81,0,4,.35); }
+.hero-slides img, .team-slides img {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block;
+  opacity: 0; transition: opacity 1.4s ease; border-radius: 0; box-shadow: none; aspect-ratio: auto;
+  transform: scale(1.04); transition: opacity 1.4s ease, transform 6s ease;
+}
+.hero-slides img.is-on, .team-slides img.is-on { opacity: 1; transform: scale(1); }
+.team-slides img { object-position: center top; }
+@media (max-width: 820px) { .hero-slides { aspect-ratio: 4 / 5; } }
