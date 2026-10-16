@@ -121,6 +121,6 @@ export default async (request, context) => {
 
 // L'archive (/lettres) et les images restent publiques et en cache.
 export const config = {
-  path: ["/lettres/*"],
+  path: ["/lettres", "/lettres/", "/lettres/*"],
   excludedPath: ["/lettres/img/*"],
 };
