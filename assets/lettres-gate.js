@@ -5,6 +5,10 @@
 (function () {
   var root = document.documentElement;
   if (!root.classList.contains('lc-locked')) return;
+  // Déjà entrée dans la Médiathèque sur ce navigateur (mot de passe ou inscription) : on la reconnaît.
+  try {
+    if (localStorage.getItem('lc_mediatheque_unlocked') === '1') { root.classList.remove('lc-locked'); return; }
+  } catch (e) {}
 
   var css = document.createElement('style');
   css.textContent =
