@@ -78,11 +78,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </div>
     <figure class="hero-v3-photo hero-slides" aria-label="Photos des soirées Liberté, Chérie !">
-      <img src="assets/img/2026/hero-1.jpg" alt="Sur scène, lors d'une soirée Liberté, Chérie !" fetchpriority="high" class="is-on">
-      <img src="assets/img/2026/hero-2.jpg" alt="Les fondatrices de Liberté, Chérie !" loading="lazy">
+      <img src="assets/img/2026/hero-2.jpg" alt="Les fondatrices de Liberté, Chérie !" fetchpriority="high" class="is-on">
       <img src="assets/img/2026/hero-3.jpg" alt="Une table dressée pour un dîner" loading="lazy">
-      <img src="assets/img/2026/hero-4.jpg" alt="Un cercle de parole" loading="lazy">
-      <img src="assets/img/2026/hero-5.jpg" alt="Le public d'un talk" loading="lazy">
+      <img src="assets/img/2026/hero-1.jpg" alt="Sur scène, lors d'une soirée Liberté, Chérie !" loading="lazy">
+      <img src="assets/img/2026/hero-4.jpg" alt="Des rires pendant le festival" loading="lazy">
+      <img src="assets/img/2026/hero-5.jpg" alt="Un cercle de parole au festival" loading="lazy">
+      <img src="assets/img/2026/hero-6.jpg" alt="Une conversation devant l'exposition" loading="lazy">
+      <img src="assets/img/2026/hero-7.jpg" alt="Des retrouvailles" loading="lazy">
+      <img src="assets/img/2026/hero-8.jpg" alt="L'exposition collective du festival" loading="lazy">
     </figure>
   </div>
 
@@ -459,13 +462,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- ============================== TEAM ============================== -->
 <section class="team" id="team" data-screen-label="08 Team">
   <div class="team-grid">
-    <div class="team-photo team-slides" aria-label="Les créatrices de Liberté, Chérie !">
-      <img src="assets/img/team.jpg" alt="Cloé Dana, Stéphanie Matharet, Julie Harriau" class="is-on" loading="lazy">
-      <img src="assets/img/2026/team-2.jpg" alt="Victoria Fleury" loading="lazy">
-      <img src="assets/img/2026/team-3.jpg" alt="L'équipe pendant une soirée" loading="lazy">
-      <img src="assets/img/2026/team-4.jpg" alt="L'équipe pendant une soirée" loading="lazy">
-      <img src="assets/img/2026/team-5.jpg" alt="Sur scène" loading="lazy">
-      <img src="assets/img/2026/team-6.jpg" alt="L'équipe pendant une soirée" loading="lazy">
+    <div class="team-pile" role="img" aria-label="Les créatrices de Liberté, Chérie ! en photos">
+      <img src="assets/img/2026/team-3.jpg" alt="" loading="lazy">
+      <img src="assets/img/2026/team-5.jpg" alt="" loading="lazy">
+      <img src="assets/img/2026/team-2.jpg" alt="" loading="lazy">
+      <img src="assets/img/2026/team-4.jpg" alt="" loading="lazy">
+      <img src="assets/img/2026/team-6.jpg" alt="" loading="lazy">
+      <img src="assets/img/team.jpg" alt="" loading="lazy">
     </div>
     <div>
       <div class="section-eyebrow">Les créatrices de Liberté,&nbsp;Chérie&nbsp;!</div>
@@ -523,7 +526,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <div class="edito-grid">
     <article class="edito-card">
-      <div class="ec-head nl">
+      <div class="ec-head nl has-img"><img class="ec-img" src="assets/img/2026/edito-lettres.jpg" alt="" loading="lazy">
         <div class="ec-cat">N° 01 · Deux fois par mois</div>
         <div class="ec-name">Les<br>Lettres</div>
       </div>
@@ -540,7 +543,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </article>
 
     <article class="edito-card">
-      <div class="ec-head md">
+      <div class="ec-head md has-img"><img class="ec-img" src="assets/img/2026/edito-mediatheque.jpg" alt="" loading="lazy">
         <div class="ec-cat">N° 02 · Permanent</div>
         <div class="ec-name">La<br>Médiathèque</div>
       </div>
@@ -554,7 +557,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </article>
 
     <article class="edito-card">
-      <div class="ec-head rc">
+      <div class="ec-head rc has-img"><img class="ec-img" src="assets/img/2026/edito-podcast.jpg" alt="" loading="lazy"><span class="ec-stamp">À venir</span>
         <div class="ec-cat">N° 03 · Bientôt</div>
         <div class="ec-name">Le<br>Podcast</div>
       </div>
@@ -728,15 +731,39 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <script>
 (function(){
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
   function run(sel,ms){
     var box=document.querySelector(sel); if(!box) return;
-    var imgs=box.querySelectorAll('img'); if(imgs.length<2) return;
-    if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var imgs=box.querySelectorAll('img'); if(imgs.length<2||reduce) return;
     var i=0; setInterval(function(){
       imgs[i].classList.remove('is-on'); i=(i+1)%imgs.length; imgs[i].classList.add('is-on');
     },ms);
   }
-  run('.hero-slides',4500); run('.team-slides',3800);
+  run('.hero-slides',4500);
+
+  /* Créatrices : les photos arrivent une à une et s'empilent, puis la pile recommence */
+  var pile=document.querySelector('.team-pile');
+  if(pile){
+    var ph=[].slice.call(pile.querySelectorAll('img')), n=ph.length;
+    var poses=[
+      {t:0, l:0, w:60,h:56,r:-5},
+      {t:6, l:40,w:58,h:64,r:6},
+      {t:40,l:2, w:52,h:58,r:4},
+      {t:44,l:44,w:54,h:54,r:-6},
+      {t:24,l:22,w:56,h:50,r:2},
+      {t:13,l:12,w:76,h:74,r:-3}
+    ];
+    ph.forEach(function(im,k){var p=poses[k%poses.length];im.style.top=p.t+'%';im.style.left=p.l+'%';im.style.width=p.w+'%';im.style.height=p.h+'%';im.style.setProperty('--r',p.r+'deg');});
+    if(reduce){ph.forEach(function(im){im.classList.add('on');});return;}
+    var shown=0, started=false;
+    function step(){
+      if(shown<n){ph[shown].style.zIndex=10+shown;ph[shown].classList.add('on');shown++;setTimeout(step,1300);}
+      else{setTimeout(function(){ph.forEach(function(im){im.classList.remove('on');});shown=0;setTimeout(step,900);},3200);}
+    }
+    function start(){if(started)return;started=true;step();}
+    if('IntersectionObserver' in window){new IntersectionObserver(function(e,o){if(e[0].isIntersecting){start();o.disconnect();}},{threshold:.3}).observe(pile);}
+    else start();
+  }
 })();
 </script>
 </body>
