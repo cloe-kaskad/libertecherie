@@ -101,6 +101,30 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   }
 
 
+
+  .lt-feature { display: grid; grid-template-columns: 1.1fr 1fr; background: var(--bordeaux); color: var(--blanc); border-radius: 12px; overflow: hidden; text-decoration: none; transition: transform .2s; }
+  .lt-feature:hover { transform: translateY(-3px); }
+  .lt-feature img { width: 100%; height: 100%; object-fit: cover; display: block; min-height: 320px; }
+  .lt-feature-body { padding: 44px 42px; display: flex; flex-direction: column; justify-content: center; }
+  .lt-feature .lt-kicker { color: var(--rose); }
+  .lt-feature h3 { font-family: var(--fb); font-weight: 700; font-size: clamp(26px, 3vw, 36px); line-height: 1.15; margin-bottom: 14px; }
+  .lt-feature h3 .it { font-family: var(--fs); font-style: italic; font-weight: 400; color: var(--rose); }
+  .lt-feature p { font-family: var(--fb); font-size: 16px; line-height: 1.6; color: rgba(255,255,255,.85); margin-bottom: 22px; }
+  .lt-feature .lt-btn { align-self: flex-start; background: var(--rose); color: var(--bordeaux); }
+  .lt-sec-title { font-family: var(--fb); font-weight: 700; font-size: clamp(24px, 3vw, 34px); color: var(--bordeaux); margin: 0 0 26px; }
+  .lt-sec-title .it { font-family: var(--fs); font-style: italic; font-weight: 400; color: var(--rouge); }
+  .lt-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+  .lt-lcard { background: var(--blanc); border-radius: 10px; overflow: hidden; text-decoration: none; color: inherit; display: flex; flex-direction: column; border: 1px solid var(--hairline); transition: transform .2s, box-shadow .2s; }
+  .lt-lcard:hover { transform: translateY(-3px); box-shadow: 0 14px 40px rgba(81,0,4,.10); }
+  .lt-lcard img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; background: var(--gris); }
+  .lt-lcard-body { padding: 22px 22px 24px; display: flex; flex-direction: column; flex: 1; font-family: var(--fb); }
+  .lt-lcard .num { font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--rouge); font-weight: 600; margin-bottom: 10px; }
+  .lt-lcard h3 { font-family: var(--fs); font-style: italic; font-weight: 400; font-size: 21px; line-height: 1.3; color: var(--bordeaux); margin-bottom: 10px; }
+  .lt-lcard p { font-size: 15px; line-height: 1.55; color: var(--doux); margin-bottom: 16px; }
+  .lt-lcard .read { margin-top: auto; font-size: 14px; font-weight: 600; color: var(--rouge); }
+  @media (max-width: 860px) { .lt-feature { grid-template-columns: 1fr; } .lt-feature img { min-height: 220px; max-height: 280px; } .lt-cards { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 560px) { .lt-cards { grid-template-columns: 1fr; } .lt-feature-body { padding: 30px 24px; } }
+
 </style>
 </head>
 <body class="lt-page ">
@@ -126,27 +150,81 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </ul>
 </nav>
 
-
 <header class="lt-hero">
   <div class="lt-wrap">
     <div class="lt-eyebrow">Réservé à la communauté</div>
     <h1 class="lt-h1">Les lettres<span class="it">tout ce qu'on vous a écrit, au même endroit.</span></h1>
-    <p class="lt-lede">Les newsletters, les toolbox, les ressources. À relire, à partager avec une amie (qui devra s'inscrire pour entrer, c'est la règle).</p>
+    <p class="lt-lede">Deux fois par mois, une question. Ici, toutes les éditions de La Question, Chérie ! et nos toolbox, à relire quand vous voulez.</p>
   </div>
 </header>
+
 <section class="lt-section" style="padding-top:64px">
   <div class="lt-wrap">
-    <div class="lt-trio">
-      <a class="lt-box" href="/lettres/toolbox-argent" style="text-decoration:none;color:inherit;border:1px solid var(--hairline)">
+    <h2 class="lt-sec-title">À la <span class="it">une</span></h2>
+    <a class="lt-feature" href="/lettres/toolbox-argent">
+      <img src="/assets/img/fa-cash.jpg" alt="">
+      <div class="lt-feature-body">
         <div class="lt-kicker">Toolbox · Octobre 2026</div>
-        <h3>Femmes &amp; Argent : nos meilleures ressources #thune</h3>
+        <h3>Femmes &amp; Argent : <span class="it">nos meilleures ressources #thune</span></h3>
         <p>Des expertes à suivre, six livres, des podcasts, un film en accès libre, trois cours à -20 % et Clodie, notre outil impôts.</p>
-        <span class="lt-btn" style="margin-top:auto">Lire</span>
+        <span class="lt-btn">Ouvrir la toolbox</span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<section class="lt-section" style="padding-top:24px">
+  <div class="lt-wrap">
+    <h2 class="lt-sec-title">Toutes les <span class="it">lettres</span></h2>
+    <div class="lt-cards">
+      <a class="lt-lcard" href="/lettres/la-femme-quon-sera">
+        <img src="/lettres/img/7668071ddcb0387d.jpg" alt="" loading="lazy">
+        <div class="lt-lcard-body">
+          <div class="num">N° 05 · 14 octobre 2026</div>
+          <h3>Qu'est-ce qu'on doit à la femme qu'on sera ?</h3>
+          <p>Les décisions d'aujourd'hui se paient plus tard, par une femme qu'on ne connaît pas encore.</p>
+          <span class="read">Lire la lettre →</span>
+        </div>
+      </a>
+      <a class="lt-lcard" href="/lettres/gagner-sa-vie">
+        <img src="/lettres/img/b7961070cfbb5d14.jpg" alt="" loading="lazy">
+        <div class="lt-lcard-body">
+          <div class="num">N° 04 · 30 septembre 2026</div>
+          <h3>Qu'est-ce qu'on gagne, à gagner sa vie ?</h3>
+          <p>Un compte à soi, le couple, la maternité : parler d'argent, c'est parler de liberté.</p>
+          <span class="read">Lire la lettre →</span>
+        </div>
+      </a>
+      <a class="lt-lcard" href="/lettres/ce-qui-ne-se-compte-pas">
+        <img src="/lettres/img/2159d97d0612b805.jpg" alt="" loading="lazy">
+        <div class="lt-lcard-body">
+          <div class="num">N° 03 · 9 septembre 2026</div>
+          <h3>Ce qui ne se compte pas a moins de valeur ?</h3>
+          <p>Ce qu'un travail rapporte, on sait le dire. Ce qu'il nous apporte, beaucoup moins.</p>
+          <span class="read">Lire la lettre →</span>
+        </div>
+      </a>
+      <a class="lt-lcard" href="/lettres/le-temps">
+        <img src="/lettres/img/72aab49a368b6de0.webp" alt="" loading="lazy">
+        <div class="lt-lcard-body">
+          <div class="num">N° 02 · 26 août 2026</div>
+          <h3>Et toi, est-ce que t'as le temps ?</h3>
+          <p>Charge mentale, injonction à l'optimisation, vacances à cocher : à qui appartient notre temps ?</p>
+          <span class="read">Lire la lettre →</span>
+        </div>
+      </a>
+      <a class="lt-lcard" href="/lettres/la-question">
+        <img src="/lettres/img/b0c50827823ba83b.jpg" alt="" loading="lazy">
+        <div class="lt-lcard-body">
+          <div class="num">N° 01 · 12 août 2026</div>
+          <h3>La Question, Chérie !</h3>
+          <p>On passe quinze ans à apprendre à répondre. Mais qui nous apprend à questionner ?</p>
+          <span class="read">Lire la lettre →</span>
+        </div>
       </a>
     </div>
   </div>
 </section>
-
 
 <footer>
   <div class="footer-top">
