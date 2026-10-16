@@ -179,6 +179,38 @@
 
         if (aVenir.length) {
           upcoming.innerHTML = aVenir.map(cardAVenir).join('');
+        // Données structurées Event (Google + IA) pour les dates à venir
+        try {
+          var ld = aVenir.filter(function (ev) { return ev && ev.titre && ev.date; }).map(function (ev) {
+            var o = {
+              '@type': 'Event',
+              name: ev.titre,
+              startDate: ev.date,
+              eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+              eventStatus: 'https://schema.org/EventScheduled',
+              organizer: { '@type': 'Organization', name: 'Liberté, Chérie !', url: 'https://libertecherie.paris/' },
+              location: { '@type': 'Place', name: ev.lieu || 'Kaskad République',
+                address: { '@type': 'PostalAddress', streetAddress: '5 rue Bouchardon', addressLocality: 'Paris', postalCode: '75010', addressCountry: 'FR' } },
+              inLanguage: 'fr-FR'
+            };
+            if (ev.accroche) o.description = ev.accroche;
+            if (ev.image) o.image = ev.image;
+            var url = ev.lienPage || ev.lienPaiement;
+            if (url) o.url = url;
+            if (ev.prix != null && ev.prix !== '') {
+              var p = parseFloat(String(ev.prix).replace(',', '.'));
+              o.offers = { '@type': 'Offer', price: isNaN(p) ? 0 : p, priceCurrency: 'EUR', url: ev.lienPaiement || url || 'https://libertecherie.paris/evenements',
+                availability: /complet/i.test(ev.statut || '') ? 'https://schema.org/SoldOut' : 'https://schema.org/InStock' };
+            }
+            return o;
+          });
+          if (ld.length) {
+            var sc = document.createElement('script'); sc.type = 'application/ld+json';
+            sc.textContent = JSON.stringify({ '@context': 'https://schema.org', '@graph': ld });
+            document.head.appendChild(sc);
+          }
+        } catch (err) {}
+
         } else {
           renderEmpty(upcoming);
         }

@@ -46,6 +46,7 @@ exports.handler = async (event) => {
   let payload;
   try {
     payload = JSON.parse(event.body || '{}');
+    var source = typeof payload.source === 'string' ? payload.source.replace(/[^\w\s@\/\-\.:#?=&]/g, '').slice(0, 120) : '';
   } catch (_) {
     return { statusCode: 400, headers: cors, body: JSON.stringify({ error: 'Invalid JSON' }) };
   }
@@ -75,7 +76,7 @@ exports.handler = async (event) => {
         updateEnabled: true,    // si l'email existe déjà, on met à jour ses listes
         attributes: {
           OPT_IN: true,
-          SOURCE: 'site libertecherie.paris',
+          SOURCE: 'site libertecherie.paris' + (source ? ' | ' + source : ''),
         },
       }),
     });
