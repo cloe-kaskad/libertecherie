@@ -140,9 +140,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="lt-wrap lt-split" style="align-items:start">
     <div>
       <div class="lt-eyebrow">Réservé à la communauté</div>
-      <h1 class="lt-h1">La toolbox<span class="it">Femmes &amp; Argent</span></h1>
-      <p class="lt-lede">Le 7 octobre, on a parlé argent avec 60 femmes et Rebecca Amsellem. Ce qu'on en a retenu tient en une page.</p>
-      <ul class="lt-list" style="margin-top:26px;font-size:17px">
+      <h1 class="lt-h1" id="accesH1">La toolbox<span class="it">Femmes &amp; Argent</span></h1>
+      <p class="lt-lede" id="accesLede">Le 7 octobre, on a parlé argent avec 60 femmes et Rebecca Amsellem. Ce qu'on en a retenu tient en une page.</p>
+      <ul class="lt-list" id="accesList" style="margin-top:26px;font-size:17px">
         <li><strong>Des expertes à suivre</strong> pour négocier, budgéter, investir</li>
         <li><strong>Un film en accès libre</strong> jusqu'au 2 novembre</li>
         <li><strong>Six livres et cinq podcasts</strong> choisis par l'équipe</li>
@@ -171,6 +171,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     var params = new URLSearchParams(location.search);
     var suite = params.get('suite') || '/lettres/toolbox-argent';
     if (!/^\/lettres(\/|$)/.test(suite)) suite = '/lettres/toolbox-argent';
+    // Arrivée depuis l'archive ou une ancienne lettre : on présente les lettres, pas seulement la toolbox
+    var isToolbox = /^\/lettres\/toolbox/.test(suite);
+    var label = isToolbox ? 'Accéder à la toolbox' : 'Accéder aux lettres';
+    btn.textContent = label;
+    if (!isToolbox) {
+      document.getElementById('accesH1').innerHTML = 'Les lettres<span class="it">tout ce qu’on vous a écrit, au même endroit.</span>';
+      document.getElementById('accesLede').textContent = 'Deux fois par mois, une question. Retrouve toutes les éditions de La Question, Chérie ! et nos toolbox, réservées à la communauté.';
+      document.getElementById('accesList').innerHTML =
+        '<li><strong>Les cinq premières éditions</strong> : la question, le temps, la valeur, l’argent, la femme qu’on sera</li>' +
+        '<li><strong>La toolbox Femmes &amp; Argent</strong> : expertes, livres, podcasts, un film offert</li>' +
+        '<li><strong>Des codes et offres réservés</strong> aux lectrices</li>' +
+        '<li><strong>Chaque nouvelle lettre</strong>, ajoutée au fil de la saison</li>';
+      document.title = 'Les lettres - Liberté, Chérie !';
+    }
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       var email = (document.getElementById('accesEmail').value || '').trim();
@@ -185,7 +199,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         msg.textContent = 'C\u2019est ouvert, on t\u2019emmène…';
         setTimeout(function () { location.href = suite; }, 700);
       }).catch(function () {
-        btn.disabled = false; btn.textContent = 'Accéder à la toolbox';
+        btn.disabled = false; btn.textContent = label;
         msg.textContent = 'Oups, réessaie dans un instant.';
       });
     });
