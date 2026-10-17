@@ -51,6 +51,13 @@
     }
   }, true);
 
+
+  // 0 ter. FAQ : question ouverte
+  document.addEventListener('toggle', function (e) {
+    var d = e.target; if (!d || !d.classList || !d.classList.contains('faq-item') || !d.open) return;
+    var q = d.querySelector('summary span'); push('faq_open', { question: q ? q.textContent.trim().slice(0, 80) : '' });
+  }, true);
+
   // 1. Inscription newsletter réussie (accueil, page newsletter, médiathèque)
   if (window.fetch) {
     var _fetch = window.fetch;
