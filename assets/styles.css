@@ -3297,3 +3297,16 @@ body .ev-section-title .it, body .mt-la, body .ev-h1 .it, body .lt-h1 .it, body 
   .faq-item summary { font-size: 17px; padding: 20px 0; }
   .faq-item p { font-size: 15.5px; padding-right: 0; }
 }
+
+/* ============================================================
+   REVISION 11 - titres formats en capitales + logo rouge exact
+   ============================================================ */
+.fcard-title { text-transform: uppercase; font-size: 26px; line-height: 1.08; letter-spacing: .005em; }
+.fcard-title .it { text-transform: none; font-size: 20px !important; margin-top: 10px; line-height: 1.25; }
+/* Logo : PNG au rouge exact du logo (#E7361D) au lieu d'un filtre CSS approximatif */
+.nav-logo-rouge { display: none; }
+nav.top.scrolled .nav-logo-img { filter: none !important; }
+nav.top.scrolled .nav-logo-img:not(.nav-logo-rouge) { display: none; }
+nav.top.scrolled .nav-logo-rouge { display: block; }
+nav.top.scrolled.menu-open .nav-logo-img:not(.nav-logo-rouge) { display: block; }
+nav.top.scrolled.menu-open .nav-logo-rouge { display: none; }
