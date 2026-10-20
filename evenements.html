@@ -138,7 +138,31 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .ev-past-body { padding: 15px 16px 17px; }
     .ev-past-titre { font-size: 15.5px; }
   }
+
+  /* ---- SAVE THE DATE FESTIVAL 2027 ---- */
+  .ev-std { background: var(--bordeaux); color: var(--blanc); border-radius: 14px; padding: 48px 48px 44px; display: grid; grid-template-columns: minmax(0,6fr) minmax(0,5fr); gap: 48px; align-items: center; margin-bottom: 64px; position: relative; overflow: hidden; }
+  .ev-std-kicker { font-family: var(--fb); font-size: 11px; letter-spacing: .24em; text-transform: uppercase; font-weight: 600; color: var(--rose); margin-bottom: 18px; }
+  .ev-std-date { font-family: var(--fh); font-weight: 400; text-transform: uppercase; color: var(--rouge); font-size: clamp(40px, 5.8vw, 78px); line-height: 1.14; letter-spacing: -0.01em; margin: 0; padding-top: .3em; }
+  .ev-std-date span { display: block; color: var(--rose); margin-top: .04em; }
+  .ev-std-lead { font-family: var(--fb); font-weight: 700; font-size: clamp(18px, 1.9vw, 22px); line-height: 1.3; margin: 22px 0 8px; }
+  .ev-std-place { font-family: var(--fs); font-style: italic; font-size: 15px; color: var(--rose); }
+  .ev-std-right p { font-family: var(--fb); font-size: 15.5px; line-height: 1.6; margin: 0 0 20px; opacity: .92; }
+  .ev-std-form { display: flex; gap: 8px; flex-wrap: wrap; }
+  .ev-std-form input { flex: 1 1 200px; min-width: 0; font-family: var(--fb); font-size: 15px; padding: 14px 18px; border-radius: 999px; border: 1px solid rgba(255,255,255,.35); background: rgba(255,255,255,.08); color: var(--blanc); outline: none; }
+  .ev-std-form input::placeholder { color: rgba(255,255,255,.6); }
+  .ev-std-form input:focus { border-color: var(--rose); }
+  .ev-std-form button { font-family: var(--fb); font-weight: 600; font-size: 14px; padding: 14px 22px; border-radius: 999px; border: 0; background: var(--rouge); color: var(--blanc); cursor: pointer; white-space: nowrap; }
+  .ev-std-form button:hover { background: var(--rouge-deep); }
+  .ev-std-msg { font-family: var(--fb); font-size: 13.5px; color: var(--rose); min-height: 1.2em; margin-top: 10px; }
+  .ev-std-ics { display: inline-flex; align-items: center; gap: 8px; margin-top: 14px; font-family: var(--fb); font-size: 13px; font-weight: 600; color: var(--rose); text-decoration: none; border-bottom: 1px solid rgba(247,190,202,.5); padding-bottom: 2px; }
+  .ev-std-ics:hover { border-bottom-color: var(--rose); }
+  @media (max-width: 820px) {
+    .ev-std { grid-template-columns: 1fr; gap: 26px; padding: 34px 24px 30px; margin-bottom: 48px; }
+  }
 </style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Event","name":"Festival Liberté, Chérie ! 2027","description":"Deuxième édition du festival Liberté, Chérie ! : une journée de talks, d'ateliers et de rencontres à Kaskad République, Paris 10e.","startDate":"2027-02-14","endDate":"2027-02-14","eventStatus":"https://schema.org/EventScheduled","eventAttendanceMode":"https://schema.org/OfflineEventAttendanceMode","location":{"@type":"Place","name":"Kaskad République","address":{"@type":"PostalAddress","streetAddress":"5 rue Bouchardon","postalCode":"75010","addressLocality":"Paris","addressCountry":"FR"}},"organizer":{"@type":"Organization","name":"Liberté, Chérie !","url":"https://libertecherie.paris"},"url":"https://libertecherie.paris/evenements#festival-2027","image":"https://libertecherie.paris/assets/img/kaskad-03.jpg"}
+</script>
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -205,6 +229,25 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <div class="ev-wrap">
 
+  <!-- SAVE THE DATE : FESTIVAL 2027 -->
+  <section class="ev-std" id="festival-2027" aria-labelledby="stdTitle">
+    <div class="ev-std-left">
+      <div class="ev-std-kicker">Save the date · Festival</div>
+      <h2 class="ev-std-date" id="stdTitle">14 février<span>2027</span></h2>
+      <p class="ev-std-lead">Le festival revient pour sa deuxième édition.</p>
+      <p class="ev-std-place">Une journée entière à Kaskad République, Paris 10e.</p>
+    </div>
+    <div class="ev-std-right">
+      <p>Le line-up et le programme arrivent bientôt. Inscrivez-vous à la newsletter&nbsp;: vous les découvrirez en premier, et vous serez prévenue dès l'ouverture de la billetterie.</p>
+      <form class="ev-std-form" id="stdForm" novalidate>
+        <input type="email" name="email" placeholder="Votre adresse e-mail" autocomplete="email" required aria-label="Votre adresse e-mail">
+        <button type="submit" data-cta="festival-2027-newsletter">Me prévenir</button>
+      </form>
+      <div class="ev-std-msg" id="stdMsg" role="status"></div>
+      <a class="ev-std-ics" href="assets/festival-liberte-cherie-2027.ics" download data-cta="festival-2027-agenda">+ Ajouter à mon agenda</a>
+    </div>
+  </section>
+
   <!-- À VENIR -->
   <section class="ev-section">
     <div class="ev-section-head">
@@ -267,6 +310,29 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </footer>
 
+<script>
+  (function () {
+    var f = document.getElementById('stdForm'); if (!f) return;
+    var msg = document.getElementById('stdMsg'), btn = f.querySelector('button');
+    f.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      var email = (f.email.value || '').trim();
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { msg.textContent = 'Cette adresse ne semble pas valide.'; return; }
+      btn.disabled = true; btn.textContent = 'Inscription…';
+      try {
+        var src = 'festival-2027' + (window.lcSource && window.lcSource() ? ' | ' + window.lcSource() : '');
+        var r = await fetch('/api/subscribe', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email: email, source: src }) });
+        var d = await r.json().catch(function () { return {}; });
+        if (!r.ok) throw new Error(d.error || 'Inscription impossible');
+        f.style.opacity = '.4'; f.style.pointerEvents = 'none';
+        msg.textContent = 'C\'est noté. On vous écrit dès que le programme est prêt.';
+      } catch (err) {
+        btn.disabled = false; btn.textContent = 'Me prévenir';
+        msg.textContent = err.message || 'Réessayez dans un instant.';
+      }
+    });
+  })();
+</script>
 <script src="assets/evenements.js"></script>
 <script src="assets/menu.js"></script>
 <script src="assets/track.js"></script>

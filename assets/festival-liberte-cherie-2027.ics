@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Liberte Cherie//Festival 2027//FR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:festival-2027@libertecherie.paris
+DTSTAMP:20261020T120000Z
+DTSTART;VALUE=DATE:20270214
+DTEND;VALUE=DATE:20270215
+SUMMARY:Festival Liberté\, Chérie ! 2027
+DESCRIPTION:Deuxième édition du festival Liberté\, Chérie !. Programme et billetterie à venir sur https://libertecherie.paris/evenements
+LOCATION:Kaskad République\, 5 rue Bouchardon\, 75010 Paris
+URL:https://libertecherie.paris/evenements#festival-2027
+END:VEVENT
+END:VCALENDAR

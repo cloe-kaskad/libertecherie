@@ -3310,3 +3310,5 @@ nav.top.scrolled .nav-logo-img:not(.nav-logo-rouge) { display: none; }
 nav.top.scrolled .nav-logo-rouge { display: block; }
 nav.top.scrolled.menu-open .nav-logo-img:not(.nav-logo-rouge) { display: block; }
 nav.top.scrolled.menu-open .nav-logo-rouge { display: none; }
+/* Bandeau : les mentions en fin (talk, dîner, cercle) étaient rose sur rose, donc invisibles */
+body .ticker-item.it { color: var(--bordeaux) !important; }
