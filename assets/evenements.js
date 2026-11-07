@@ -57,7 +57,7 @@
 
   // Pages dédiées par événement (clé = morceau du titre en slug).
   // Si l'API renvoie un champ lienPage, il est prioritaire.
-  var PAGES = { 'femmes-et-argent': '/femmes-et-argent' };
+  var PAGES = { 'femmes-et-argent': '/femmes-et-argent', 'cercle-de-parole-17-decembre': '/cercle-de-parole-noel' };
   function slug(s) {
     return normStatut(s).replace(/&/g, ' et ').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
   }
